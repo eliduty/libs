@@ -3,9 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-01-14 20:38:36
  * @LastEditors: eliduty
- * @LastEditTime: 2022-01-14 21:23:40
+ * @LastEditTime: 2022-01-14 22:17:33
  * @Description:
  */
-export default {
-  input: "src/index.ts",
-};
+export * as storage from './libs/storage';
