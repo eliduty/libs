@@ -13,7 +13,8 @@
   "module": "libs/index.esm.js",
   "typings": "libs/index.d.ts",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "publish":"standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
   },
   "repository": {
     "type": "git",

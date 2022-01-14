@@ -7,10 +7,11 @@ const resolve = p => path.resolve(p);
 export default {
   input: resolve('src/index.ts'),
   output: [
-    // {
-    //   file: pkg.main,
-    //   format: 'umd',
-    // },
+    {
+      file: pkg.main,
+      format: 'umd',
+      name:'Elibs'
+    },
     {
       file: pkg.module,
       format: 'esm',
