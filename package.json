@@ -1,0 +1,47 @@
+{
+  "name": "@eliduty/libs",
+  "version": "1.0.0",
+  "author": "eliduty<eliduty@qq.com>",
+  "description": "常用工具函数库",
+  "license": "MIT",
+  "keywords": [
+    "tool",
+    "util",
+    "lib"
+  ],
+  "main": "libs/index.js",
+  "module": "libs/index.esm.js",
+  "typings": "libs/index.d.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliduty/libs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
+  "contributors": [
+    {
+      "name": "eliduty",
+      "email": "eliduty@qq.com",
+      "url": "https://github.com/eliduty"
+    }
+  ],
+  "homepage": "https://github.com/eliduty/libs#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@ls-lint/ls-lint": "^1.10.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.1.7",
+    "prettier": "^2.5.1",
+    "rollup": "^2.63.0",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.4"
+  }
+}
