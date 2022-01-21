@@ -1,0 +1,30 @@
+{
+  "name": "@eliduty/storage",
+  "version": "1.0.0",
+  "author": "eliduty<eliduty@qq.com>",
+  "description": "常用工具函数库",
+  "license": "MIT",
+  "keywords": [
+    "tool",
+    "util",
+    "lib"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliduty/libs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
+  "contributors": [
+    {
+      "name": "eliduty",
+      "email": "eliduty@qq.com",
+      "url": "https://github.com/eliduty"
+    }
+  ],
+  "homepage": "https://github.com/eliduty/libs#readme"
+}

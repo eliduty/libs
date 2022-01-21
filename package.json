@@ -4,17 +4,9 @@
   "author": "eliduty<eliduty@qq.com>",
   "description": "常用工具函数库",
   "license": "MIT",
-  "keywords": [
-    "tool",
-    "util",
-    "lib"
-  ],
-  "main": "libs/index.js",
-  "module": "libs/index.esm.js",
-  "typings": "libs/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "publish":"standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
+    "publish": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
   },
   "repository": {
     "type": "git",
@@ -38,6 +30,7 @@
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "glob": "^7.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^12.1.7",
     "prettier": "^2.5.1",
