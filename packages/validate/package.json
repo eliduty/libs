@@ -1,5 +1,5 @@
 {
-  "name": "@eliduty/storage",
+  "name": "@eliduty/validate",
   "version": "1.0.0",
   "author": "eliduty<eliduty@qq.com>",
   "description": "常用工具函数库",
@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eliduty/libs.git",
-    "directory": "packages/storage"
+    "directory": "packages/validate"
   },
   "bugs": {
     "url": "https://github.com/eliduty/libs/issues"
@@ -27,5 +27,5 @@
       "url": "https://github.com/eliduty"
     }
   ],
-  "homepage": "https://github.com/eliduty/libs/tree/main/packages/storage#readme"
+  "homepage": "https://github.com/eliduty/libs/tree/main/packages/validate#readme"
 }

@@ -1,12 +1,3 @@
-/*
- * @Author: eliduty
- * @Github: https://github.com/eliduty
- * @Date: 2021-03-03 15:57:53
- * @LastEditors: eliduty
- * @LastEditTime: 2022-01-14 20:41:35
- * @Description:
- */
-
 const Storage = localStorage; // 配置使用的存储器驱动
 
 export interface StorageConfig {
