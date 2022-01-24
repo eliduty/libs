@@ -12,10 +12,9 @@ const generateBuildOption = packages => {
     // 清除构建成果
     rm('-rf', `${pkgDir}/dist/*`);
     return {
-      input: `${pkgDir}/index.ts`,
+      input: `${pkgDir}/src/index.ts`,
       output: [
         {
-
           file: resolve(pkgDir, pkg.main),
           format: 'cjs',
         },
@@ -24,7 +23,20 @@ const generateBuildOption = packages => {
           format: 'esm',
         },
       ],
-      plugins: [nodeResolve(), typescript({tsconfig: resolve(__dirname, 'tsconfig.json'),})],
+      plugins: [
+        nodeResolve(),
+        typescript({
+          tsconfig: resolve(__dirname, 'tsconfig.json'),
+          useTsconfigDeclarationDir: true,
+          tsconfigOverride: {
+            compilerOptions: {
+              declaration: true,
+              outDir:resolve('./'),
+              declarationDir: resolve(`./dist`),
+            },
+          },
+        }),
+      ],
     };
   });
 };
