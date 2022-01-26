@@ -5,7 +5,7 @@
   "description": "常用工具函数库",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
+    "build": "node scripts/build.js",
     "publish": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
   },
   "repository": {
@@ -24,6 +24,7 @@
   ],
   "homepage": "https://github.com/eliduty/libs#readme",
   "devDependencies": {
+    "@types/node": "^17.0.10",
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",
     "@ls-lint/ls-lint": "^1.10.0",
@@ -42,8 +43,5 @@
     "shelljs": "^0.8.5",
     "standard-version": "^9.3.2",
     "typescript": "^4.5.4"
-  },
-  "dependencies": {
-    "@types/node": "^17.0.10"
   }
 }

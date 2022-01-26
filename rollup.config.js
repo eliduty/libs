@@ -3,6 +3,7 @@ import glob from 'glob';
 import { rm } from 'shelljs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
+
 const getPackages = () => glob.sync('./packages/**/package.json');
 const generateBuildOption = packages => {
   return packages.map(pkgPath => {
