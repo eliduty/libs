@@ -15,6 +15,12 @@
   "files": [
     "dist/*"
   ],
+  "scripts": {
+    "publish": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eliduty/libs.git",
