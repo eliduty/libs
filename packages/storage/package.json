@@ -1,6 +1,6 @@
 {
   "name": "@eliduty/storage",
-  "version": "0.0.1-1",
+  "version": "0.0.1",
   "author": "eliduty<eliduty@qq.com>",
   "description": "本地缓存封装，支持设置过期时间",
   "license": "MIT",
