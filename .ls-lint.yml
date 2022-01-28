@@ -1,8 +1,11 @@
 ls:
-  .dir: kebab-case
-  .js: kebab-case
-  .ts: kebab-case
-  .type.ts: kebab-case
+  packages:
+    .dir: kebab-case
+    .js: kebab-case
+    .ts: kebab-case
+    .d.ts: kebab-case
+    .esm.js: kebab-case
+    .cmj.js: kebab-case
 ignore:
   - node_modules
   - dist
