@@ -1,46 +1,36 @@
-import { resolve, dirname } from 'path';
-import glob from 'glob';
-import { rm } from 'shelljs';
+import { resolve } from 'path';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
+const pkgName = process.env.TARGET;
+if (!pkgName) {
+  throw new Error('通过 --environment TARGET:[package] 指定需要构建的package');
+}
+const pkgDir = resolve(__dirname, `packages/${pkgName}`);
+const entryFile = resolve(pkgDir, 'src/index.ts');
+const pkgFilePath = resolve(pkgDir, 'package.json');
+const pkg = require(pkgFilePath);
 
-const getPackages = () => glob.sync('./packages/**/package.json');
-const generateBuildOption = packages => {
-  return packages.map(pkgPath => {
-    const packagePath = resolve(pkgPath);
-    let pkg = require(packagePath);
-    const pkgDir = dirname(packagePath);
-    // 清除构建成果
-    rm('-rf', `${pkgDir}/dist/*`);
-    return {
-      input: `${pkgDir}/src/index.ts`,
-      output: [
-        {
-          file: resolve(pkgDir, pkg.main),
-          format: 'cjs',
+export default {
+  input: entryFile,
+  output: [
+    {
+      file: resolve(pkgDir, pkg.main),
+      format: 'cjs',
+    },
+    {
+      file: resolve(pkgDir, pkg.module),
+      format: 'esm',
+    },
+  ],
+  plugins: [
+    nodeResolve(),
+    typescript({
+      tsconfig: resolve(__dirname, 'tsconfig.json'),
+      tsconfigOverride: {
+        compilerOptions: {
+          declaration: true,
         },
-        {
-          file: resolve(pkgDir, pkg.module),
-          format: 'esm',
-        },
-      ],
-      plugins: [
-        nodeResolve(),
-        typescript({
-          tsconfig: resolve(__dirname, 'tsconfig.json'),
-          useTsconfigDeclarationDir: true,
-          tsconfigOverride: {
-            compilerOptions: {
-              declaration: true,
-              outDir:resolve('./'),
-              declarationDir: resolve(`./dist`),
-            },
-          },
-        }),
-      ],
-    };
-  });
+      },
+    }),
+  ],
 };
-
-const buildOptions = generateBuildOption(getPackages());
-export default buildOptions;
