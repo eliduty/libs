@@ -10,12 +10,18 @@ const cupNumber = require('os').cpus().length;
 const packages = getPackagesName();
 
 run();
-
+/**
+ * 任务执行入口
+ */
 async function run() {
   await runParallel(cupNumber, packages, build);
 }
 
-async function build(package, packages) {
+/**
+ * 构建方法
+ * @param {*} package
+ */
+async function build(package) {
   // 清除dist目录
   const distDir = getPackageDistPath(package);
   await remove(distDir);
@@ -105,7 +111,11 @@ function getPackageDistPath(package) {
   const pkgDir = getPackageDir(package);
   return dirname(resolve(pkgDir, pkg.main));
 }
-
+/**
+ * 获取ts输出的声明文件路径
+ * @param {*} package
+ * @returns
+ */
 function getPackageDistTypesPath(package) {
   const distDir = getPackageDistPath(package);
   return resolve(distDir, `packages/${package}`);
@@ -122,19 +132,21 @@ async function contactTypes(package) {
   const pkgPath = getPackageDir(package);
   const typesPath = getPackageDistTypesPath(package);
   // src目录下的自定义声明文件
-  const existingDeclarationFiles = glob.sync(`${pkgPath}/src/**/*.d.ts`);
-  const existingDeclarationFileContents = await Promise.all(
-    existingDeclarationFiles.map(file => {
-      return readFile(file, 'utf-8');
-    })
-  );
+  const existingDeclarationFileContents = await getFilesContent(`${pkgPath}/src/**/*.d.ts`);
   // 匹配ts生成的声明文件
-  const declarationFiles = glob.sync(`${typesPath}/**/*.d.ts`);
-  const declarationFileContents = await Promise.all(
-    declarationFiles.map(file => {
+  const declarationFileContents = await getFilesContent(`${typesPath}/**/*.d.ts`);
+  await writeFile(resolve(pkgPath, pkg.types), existingDeclarationFileContents.join('\n') + '\n' + declarationFileContents.join('\n'));
+}
+/**
+ * 获取匹配文件的文件内容
+ * @param {*} glob
+ * @returns
+ */
+async function getFilesContent(pattern) {
+  const files = glob.sync(pattern);
+  return await Promise.all(
+    files.map(file => {
       return readFile(file, 'utf-8');
     })
   );
-  // TODO:增加手动声明文件合并
-  await writeFile(resolve(pkgPath, pkg.types), existingDeclarationFileContents.join('\n') + '\n' + declarationFileContents.join('\n'));
 }
