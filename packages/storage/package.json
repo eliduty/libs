@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "publish": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
+    "release": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
   },
   "repository": {
     "type": "git",
