@@ -1,17 +1,18 @@
 {
   "name": "@eliduty/storage",
-  "version": "1.0.0",
+  "version": "0.0.1-1",
   "author": "eliduty<eliduty@qq.com>",
-  "description": "常用工具函数库",
+  "description": "本地缓存封装，支持设置过期时间",
   "license": "MIT",
   "keywords": [
-    "tool",
-    "util",
-    "lib"
+    "storage"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eliduty/libs.git",
