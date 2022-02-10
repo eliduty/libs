@@ -8,16 +8,17 @@ importers:
       '@commitlint/config-conventional': ^16.0.0
       '@ls-lint/ls-lint': ^1.10.0
       '@types/node': ^17.0.10
-      chalk: ^5.0.0
+      chalk: 4.1.2
       enquirer: ^2.3.6
       eslint: ^8.6.0
       eslint-config-prettier: ^8.3.0
       eslint-plugin-prettier: ^4.0.0
-      execa: '5'
+      execa: 5.1.1
       fs-extra: ^10.0.0
       glob: ^7.2.0
       husky: ^4.3.8
       lint-staged: ^12.1.7
+      minimist: ^1.2.5
       prettier: ^2.5.1
       rollup: ^2.63.0
       rollup-plugin-node-resolve: ^5.2.0
@@ -31,7 +32,7 @@ importers:
       '@commitlint/config-conventional': 16.0.0
       '@ls-lint/ls-lint': 1.10.0
       '@types/node': 17.0.10
-      chalk: 5.0.0
+      chalk: 4.1.2
       enquirer: 2.3.6
       eslint: 8.7.0
       eslint-config-prettier: 8.3.0_eslint@8.7.0
@@ -41,6 +42,7 @@ importers:
       glob: 7.2.0
       husky: 4.3.8
       lint-staged: 12.2.1_enquirer@2.3.6
+      minimist: 1.2.5
       prettier: 2.5.1
       rollup: 2.64.0
       rollup-plugin-node-resolve: 5.2.0_rollup@2.64.0
@@ -544,11 +546,6 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-    dev: true
-
-  /chalk/5.0.0:
-    resolution: {integrity: sha512-/duVOqst+luxCQRKEo4bNxinsOQtMP80ZYm7mMqzuh5PociNL0PvmHFvREJ9ueYL2TxlHjBcmLCdmocx9Vg+IQ==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
   /ci-info/2.0.0:

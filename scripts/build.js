@@ -6,6 +6,7 @@ const { runParallel, getPackagesName, getPackageDistPath, getPackage, getPackage
 // const args = require('minimist')(process.argv.slice(2));
 // console.log(commit);
 const cupNumber = require('os').cpus().length;
+//TODO:增加构建指定的包
 const packages = getPackagesName();
 
 run();

@@ -1,40 +1,40 @@
 {
-  "name": "@eliduty/validate",
-  "version": "0.0.1-1",
-  "author": "eliduty<eliduty@qq.com>",
-  "description": "常用验证工具函数",
-  "license": "MIT",
-  "keywords": [
-    "tool",
-    "util",
-    "validate"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/*"
-  ],
-  "scripts": {
-    "release": "standard-version -i docs/CHANGELOG.md"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eliduty/libs.git",
-    "directory": "packages/validate"
-  },
-  "bugs": {
-    "url": "https://github.com/eliduty/libs/issues"
-  },
-  "contributors": [
-    {
-      "name": "eliduty",
-      "email": "eliduty@qq.com",
-      "url": "https://github.com/eliduty"
-    }
-  ],
-  "homepage": "https://github.com/eliduty/libs/tree/main/packages/validate#readme"
+	"name": "@eliduty/validate",
+	"version": "0.0.1-2",
+	"author": "eliduty<eliduty@qq.com>",
+	"description": "常用验证工具函数",
+	"license": "MIT",
+	"keywords": [
+		"tool",
+		"util",
+		"validate"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/*"
+	],
+	"scripts": {
+		"release": "standard-version -i docs/CHANGELOG.md"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eliduty/libs.git",
+		"directory": "packages/validate"
+	},
+	"bugs": {
+		"url": "https://github.com/eliduty/libs/issues"
+	},
+	"contributors": [
+		{
+			"name": "eliduty",
+			"email": "eliduty@qq.com",
+			"url": "https://github.com/eliduty"
+		}
+	],
+	"homepage": "https://github.com/eliduty/libs/tree/main/packages/validate#readme"
 }
