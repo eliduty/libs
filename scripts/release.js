@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-10 23:29:41
+ * @LastEditTime: 2022-02-10 23:36:35
  * @Description:
  */
 
@@ -199,7 +199,7 @@ async function updatePackages(releasePackagesVersionInfo) {
   if (stdout) {
     step('\nCommitting changes...');
     await run('git', ['add', '-A']);
-    await run('git', ['commit', '-m', `release: ${releaseCommit.join(' ')}`]);
+    await run('git', ['commit', '-m', `chore(release): ${releaseCommit.join(' ')}`]);
   } else {
     console.log('No changes to commit.');
   }
@@ -221,5 +221,5 @@ async function publishPackage(versionInfoList) {
 
 async function pushlish(versionInfo) {
   step(`\n正在发布${versionInfo.package}...`);
-  await run('pnpm', ['publish', '--filter', versionInfo.package, '--new-version', versionInfo.target, '--access', 'public']);
+  await run('pnpm', ['publish', '--filter', versionInfo.package, '--access', 'public']);
 }
