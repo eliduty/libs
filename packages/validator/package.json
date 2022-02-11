@@ -1,13 +1,15 @@
 {
-	"name": "@eliduty/validate",
+	"name": "@eliduty/validator",
 	"version": "1.0.0",
 	"author": "eliduty<eliduty@qq.com>",
-	"description": "常用验证工具函数",
+	"description": "该工具库主要是验证器工具类，包含了日常常用的验证工具函数",
 	"license": "MIT",
 	"keywords": [
 		"tool",
-		"util",
-		"validate"
+    "util",
+    "lib",
+		"validator",
+    "RegExp"
 	],
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
@@ -21,7 +23,7 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/eliduty/libs.git",
-		"directory": "packages/validate"
+		"directory": "packages/validator"
 	},
 	"bugs": {
 		"url": "https://github.com/eliduty/libs/issues"
@@ -33,5 +35,5 @@
 			"url": "https://github.com/eliduty"
 		}
 	],
-	"homepage": "https://github.com/eliduty/libs/tree/main/packages/validate#readme"
+	"homepage": "https://github.com/eliduty/libs/tree/main/packages/validator#readme"
 }

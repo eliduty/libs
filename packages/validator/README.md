@@ -1,16 +1,16 @@
-# @eliduty/validate
-![npm](https://img.shields.io/npm/dt/@eliduty/validate)![npm](https://img.shields.io/npm/v/@eliduty/validate)
+# @eliduty/validator
+![npm](https://img.shields.io/npm/dt/@eliduty/validator)![npm](https://img.shields.io/npm/v/@eliduty/validator)
 
-该工具库主要是验证器工具类，包含了常用的验证工具函数。
+该工具库主要是验证器工具类，包含了日常常用的验证工具函数。
 
 ## 安装
 
 ```shell
-npm install @eliduty/validate
+npm install @eliduty/validator
 // 或
-yarn add @eliduty/validate
+yarn add @eliduty/validator
 // 或
-pnpm install @eliduty/validate
+pnpm install @eliduty/validator
 ```
 ## 函数列表
 
