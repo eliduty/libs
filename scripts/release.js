@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 13:41:07
+ * @LastEditTime: 2022-02-11 22:42:20
  * @Description:
  */
 
@@ -248,6 +248,7 @@ async function commitPackagesMessage(releasePackagesVersionInfo, isRollBack) {
       step('\nCommitting changes...');
       await run('git', ['add', '-A']);
       await run('git', ['commit', '-m', `chore(release): ${releaseCommit.join(' ')}`]);
+      await run('git', ['push'])
     } else {
       console.log('No changes to commit.');
     }
