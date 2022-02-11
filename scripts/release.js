@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 11:12:20
+ * @LastEditTime: 2022-02-11 11:58:35
  * @Description:
  */
 
@@ -46,7 +46,9 @@ async function main() {
   // 更新子包版本
   await updatePackages(versionInfo);
   // 更新主包版本号、git tag 、生成changelog
-  await updateMainPackage();
+  const isSuccess = await updateMainPackage();
+  // 根据主包发布结果，处理子包git message
+  await commitPackagesMessage(versionInfo, !isSuccess);
   // 发布包
   await publishPackage(versionInfo);
   step('\n发布完成！');
@@ -214,30 +216,55 @@ async function buildPackages(packages) {
 async function updatePackages(releasePackagesVersionInfo) {
   console.log(releasePackagesVersionInfo);
   step('\n正在更新子包版本...');
-  const releaseCommit = [];
   releasePackagesVersionInfo.forEach(item => {
     const pkgPath = getPackageFilePath(item.package);
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
     pkg.version = item.target;
     writeFileSync(pkgPath, JSON.stringify(pkg, '', '\t'), { encoding: 'utf8' });
-    releaseCommit.push(`${item.package} v${item.target}`);
   });
-  const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
-  if (stdout) {
-    step('\nCommitting changes...');
-    await run('git', ['add', '-A']);
-    await run('git', ['commit', '-m', `chore(release): ${releaseCommit.join(' ')}`]);
-  } else {
-    console.log('No changes to commit.');
-  }
 }
 /**
  * 更新主包
  */
 async function updateMainPackage() {
   step('\n更新主包信息...');
-  await run('pnpm', ['run', 'version']);
+  const isSuccess = await run('pnpm', ['run', 'version']).catch(() => false);
+  return !!isSuccess;
 }
+
+async function commitPackagesMessage(releasePackagesVersionInfo, isRollBack) {
+  if (isRollBack) {
+    // 主包发布失败 回滚子包
+    runParallel(cupNumber, releasePackagesVersionInfo, rollback);
+  } else {
+    // 主包发布成功 提交子包message
+    const releaseCommit = [];
+    releasePackagesVersionInfo.forEach(item => {
+      // 子包commit message
+      releaseCommit.push(`${item.package} v${item.target}`);
+    });
+    // 提交子包commit message
+    const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
+    if (stdout) {
+      step('\nCommitting changes...');
+      await run('git', ['add', '-A']);
+      await run('git', ['commit', '-m', `chore(release): ${releaseCommit.join(' ')}`]);
+    } else {
+      console.log('No changes to commit.');
+    }
+  }
+}
+
+/**
+ * 回滚包
+ * @param {*} package
+ */
+async function rollback(versionInfo) {
+  const pkgPath = getPackageFilePath(versionInfo.package);
+  step(`\n正在回滚${pkgPath}...`);
+  await run('git', ['checkout', '-q', '--', pkgPath]);
+}
+
 /**
  * 发布选中的包
  */

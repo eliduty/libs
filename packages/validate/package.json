@@ -1,6 +1,6 @@
 {
 	"name": "@eliduty/validate",
-	"version": "0.0.1-5",
+	"version": "0.0.1-6",
 	"author": "eliduty<eliduty@qq.com>",
 	"description": "常用验证工具函数",
 	"license": "MIT",
