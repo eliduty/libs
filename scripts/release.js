@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 10:10:13
+ * @LastEditTime: 2022-02-11 11:12:20
  * @Description:
  */
 
@@ -18,7 +18,6 @@ const { readFileSync, writeFileSync } = require('fs');
 const execa = require('execa');
 const { prompt } = require('enquirer');
 const semver = require('semver');
-
 const chalk = require('chalk');
 const args = require('minimist')(process.argv.slice(2));
 const { getPackagesName, getPackage, getPackageFilePath, runParallel } = require('./utils');
@@ -43,7 +42,7 @@ async function main() {
   //确认版本号
   await confirmVersion(versionInfo);
   //构建打包
-  await buildPackages();
+  await buildPackages(releasePackages);
   // 更新子包版本
   await updatePackages(versionInfo);
   // 更新主包版本号、git tag 、生成changelog
@@ -57,17 +56,22 @@ async function main() {
  * 检查github git提交是否正常
  */
 async function checkGithubNetwork() {
-  await run('git', ['pull']);
+  step('\n检查github网络连接...');
+  const isSuccess = await run('git', ['pull']).catch(() => false);
+  if (!isSuccess) {
+    console.log(chalk.red('网络连接异常！'));
+    process.exit();
+  }
 }
 
 /**
  * 检查是否登录了npm
  */
 async function checkIsLoginNpm() {
-  step('\n验证当前登录用户...');
+  step('\n验证当前登录状态...');
   const isLogin = await run('pnpm', ['whoami']).catch(() => false);
   if (!isLogin) {
-    console.log(chalk.red('用户未登录npm'));
+    console.log(chalk.red('用户未登录npm！'));
     process.exit();
   }
 }
@@ -199,9 +203,9 @@ async function confirmVersion(versionInfo) {
 /**
  * 构建打包
  */
-async function buildPackages() {
+async function buildPackages(packages) {
   step('\n正在构建...');
-  await run('pnpm', ['run', 'build']);
+  await run('pnpm', ['run', 'build', ...packages]);
 }
 /**
  * 更新子包版本信息

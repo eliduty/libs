@@ -1,12 +1,13 @@
 const execa = require('execa');
+const chalk = require('chalk');
 const { remove, writeFile } = require('fs-extra');
 const { resolve } = require('path');
 const { runParallel, getPackagesName, getPackageDistPath, getPackage, getPackageDir, getPackageDistTypesPath, getFilesContent } = require('./utils');
+const args = require('minimist')(process.argv.slice(2));
+const targets = args._;
 // const commit = execa.sync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 7);
-// const args = require('minimist')(process.argv.slice(2));
 // console.log(commit);
 const cupNumber = require('os').cpus().length;
-//TODO:增加构建指定的包
 const packages = getPackagesName();
 
 run();
@@ -14,7 +15,11 @@ run();
  * 任务执行入口
  */
 async function run() {
-  await runParallel(cupNumber, packages, build);
+  if (!targets.every(item => packages.includes(item))) {
+    console.log(chalk.red('包名参数无效！'));
+    process.exit();
+  }
+  await runParallel(cupNumber, targets.length ? targets : packages, build);
 }
 
 /**
