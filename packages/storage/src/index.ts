@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-01-25 08:47:36
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 16:20:49
+ * @LastEditTime: 2022-02-11 20:47:54
  * @Description:
  */
 
@@ -65,9 +65,8 @@ export default class xStorage {
   }
 }
 
-const driver = localStorage; // 配置使用的存储器驱动
-
-const storage = new xStorage({ driver, prefix: '' });
+const defaultDriver = localStorage; // 配置使用的存储器驱动
+const storage = new xStorage({ driver: defaultDriver, prefix: '' });
 /**
  * 设置缓存
  * @param key 缓存标识
