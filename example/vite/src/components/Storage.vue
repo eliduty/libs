@@ -1,12 +1,11 @@
 <script setup lang="ts">
   import Storage, { setStorage, getStorage, removeStorage, clearStorage } from '@eliduty/storage';
   import { ref } from 'vue';
-  import xStorage from '@eliduty/storage';
   const value = ref('');
   const storageValue = ref<string>('');
   const key = 'storage-key';
 
-  const storage = new xStorage({ driver: sessionStorage, prefix: 'test_' });
+  const storage = new Storage({ driver: sessionStorage, prefix: 'test_' });
 
   const handleSet = () => {
     setStorage(key, value.value, { expire: 10 });
