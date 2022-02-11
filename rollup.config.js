@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
+import { terser } from 'rollup-plugin-terser';
 const pkgName = process.env.TARGET;
 if (!pkgName) {
   throw new Error('通过 --environment TARGET:[package] 指定需要构建的package');
@@ -15,7 +16,8 @@ export default {
   output: [
     {
       file: resolve(pkgDir, pkg.main),
-      format: 'cjs',
+      format: 'umd',
+      name: `E${pkgName}`,
     },
     {
       file: resolve(pkgDir, pkg.module),
@@ -24,6 +26,7 @@ export default {
   ],
   plugins: [
     nodeResolve(),
+    terser(),
     typescript({
       tsconfig: resolve(__dirname, 'tsconfig.json'),
       tsconfigOverride: {
