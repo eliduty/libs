@@ -8,7 +8,8 @@
     "build": "node scripts/build.js",
     "release:pre": "node scripts/release.js -p",
     "release": "node scripts/release.js",
-    "version": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main"
+    "version": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main",
+    "dev:vite": "pnpm run dev --filter vite"
   },
   "repository": {
     "type": "git",
