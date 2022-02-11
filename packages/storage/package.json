@@ -1,38 +1,35 @@
 {
-	"name": "@eliduty/storage",
-	"version": "0.0.3-4",
-	"author": "eliduty<eliduty@qq.com>",
-	"description": "本地缓存封装，支持设置过期时间",
-	"license": "MIT",
-	"keywords": [
-		"storage"
-	],
-	"main": "dist/index.js",
-	"module": "dist/index.esm.js",
-	"types": "dist/index.d.ts",
-	"files": [
-		"dist/*"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"release": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main && npm publish"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/eliduty/libs.git",
-		"directory": "packages/storage"
-	},
-	"bugs": {
-		"url": "https://github.com/eliduty/libs/issues"
-	},
-	"contributors": [
-		{
-			"name": "eliduty",
-			"email": "eliduty@qq.com",
-			"url": "https://github.com/eliduty"
-		}
-	],
-	"homepage": "https://github.com/eliduty/libs/tree/main/packages/storage#readme"
+  "name": "@eliduty/storage",
+  "version": "1.0.0",
+  "author": "eliduty<eliduty@qq.com>",
+  "description": "本地缓存封装，支持设置过期时间",
+  "license": "MIT",
+  "keywords": [
+    "storage"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliduty/libs.git",
+    "directory": "packages/storage"
+  },
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
+  "contributors": [
+    {
+      "name": "eliduty",
+      "email": "eliduty@qq.com",
+      "url": "https://github.com/eliduty"
+    }
+  ],
+  "homepage": "https://github.com/eliduty/libs/tree/main/packages/storage#readme"
 }

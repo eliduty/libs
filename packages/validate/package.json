@@ -15,9 +15,6 @@
 	"files": [
 		"dist/*"
 	],
-	"scripts": {
-		"release": "standard-version -i docs/CHANGELOG.md"
-	},
 	"publishConfig": {
 		"access": "public"
 	},
