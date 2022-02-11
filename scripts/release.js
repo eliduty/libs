@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 11:58:35
+ * @LastEditTime: 2022-02-11 13:41:07
  * @Description:
  */
 
@@ -214,7 +214,6 @@ async function buildPackages(packages) {
  * @param {*} releasePackagesVersionInfo
  */
 async function updatePackages(releasePackagesVersionInfo) {
-  console.log(releasePackagesVersionInfo);
   step('\n正在更新子包版本...');
   releasePackagesVersionInfo.forEach(item => {
     const pkgPath = getPackageFilePath(item.package);
