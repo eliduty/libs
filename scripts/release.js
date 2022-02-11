@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 10:04:04
+ * @LastEditTime: 2022-02-11 10:10:13
  * @Description:
  */
 
@@ -31,7 +31,7 @@ main().catch(console.error);
 
 async function main() {
   // 检查github git提交是否正常
-  await checkGithubNetWork();
+  await checkGithubNetwork();
   // 检查是否登录了npm
   await checkIsLoginNpm();
   // 选择需要更新子包
@@ -56,7 +56,7 @@ async function main() {
 /**
  * 检查github git提交是否正常
  */
-async function checkGithubNetWork() {
+async function checkGithubNetwork() {
   await run('git', ['pull']);
 }
 
