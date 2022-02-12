@@ -1,6 +1,6 @@
 {
 	"name": "@eliduty/type",
-	"version": "1.0.0",
+	"version": "1.0.1-0",
 	"author": "eliduty<eliduty@qq.com>",
 	"description": "该工具库主要是类型判断工具库",
 	"license": "MIT",
@@ -9,7 +9,7 @@
 		"util",
 		"lib",
 		"type",
-    "typeof"
+		"typeof"
 	],
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
