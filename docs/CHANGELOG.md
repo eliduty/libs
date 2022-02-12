@@ -1,4 +1,16 @@
 # 更新日志
+## [1.2.0](https://github.com/eliduty/libs/compare/v1.1.0...v1.2.0) (2022-02-12)
+
+
+### Bug修复
+
+* 增加子包构建完成推送git信息 ([ea8ecb9](https://github.com/eliduty/libs/commit/ea8ecb99891f966345a07fcbd43fe8f231a93275))
+
+
+### 新功能
+
+* type类型判断库 ([7abb2ad](https://github.com/eliduty/libs/commit/7abb2adfe0fa0fcfaebc6559486d25c70a130881))
+
 ## 1.1.0 (2022-02-11)
 
 
