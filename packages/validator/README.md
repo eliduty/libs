@@ -1,5 +1,5 @@
 # @eliduty/validator
-![npm](https://img.shields.io/npm/dt/@eliduty/validator)![npm](https://img.shields.io/npm/v/@eliduty/validator)
+![npm](https://img.shields.io/npm/dt/@eliduty/validator) ![npm](https://img.shields.io/npm/v/@eliduty/validator)
 
 该工具库主要是验证器工具类，包含了日常常用的验证工具函数。
 

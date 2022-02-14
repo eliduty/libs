@@ -1,6 +1,6 @@
 # @eliduty/storage
 
-![npm](https://img.shields.io/npm/dt/@eliduty/storage)![npm](https://img.shields.io/npm/v/@eliduty/storage)
+![npm](https://img.shields.io/npm/dt/@eliduty/storage) ![npm](https://img.shields.io/npm/v/@eliduty/storage)
 
 该工具库是在本地存储的基础上进行的封装，优化使用体验，支持自定义localStorage和sessionStorage存储驱动。
 
@@ -55,6 +55,3 @@ storage.remove(key); //移除特定标识缓存
 storage.clear(); //清除所有缓存
 
 ```
-
-
-
