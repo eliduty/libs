@@ -8,7 +8,7 @@
   const storage = new Storage({ driver: sessionStorage, prefix: 'test_' });
 
   const handleSet = () => {
-    setStorage(key, value.value, { expire: 10 });
+    setStorage(key, value.value);
   };
   const handleGet = () => {
     storageValue.value = getStorage(key) as string;
@@ -24,7 +24,7 @@
     storage.set(key, value.value, { expire: 10 });
   };
   const handleClassGet = () => {
-    storageValue.value = storage.get(key) as string;
+    storageValue.value = storage.get(key) || '';
   };
   const handleClassRemove = () => {
     storage.remove(key);

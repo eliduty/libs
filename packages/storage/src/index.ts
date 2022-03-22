@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-01-25 08:47:36
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 21:21:29
+ * @LastEditTime: 2022-03-22 20:06:09
  * @Description:
  */
 
@@ -15,8 +15,8 @@ export interface EstorageConfig {
   //过期时间 单位秒
   expire?: number;
 }
-export interface EstorageData {
-  data: unknown;
+export interface EstorageData<T = unknown> {
+  data: T;
   expire?: number;
 }
 
@@ -32,19 +32,20 @@ export default class Estorage {
     this.prefix = option.prefix || '';
     return this;
   }
-  get(key: string) {
+  get<T = unknown>(key: string) {
     key = this.getKey(key);
     let value = this.driver.getItem(key) || '';
     if (value) {
-      let storageData = JSON.parse(value) as EstorageData;
+      let storageData = JSON.parse(value) as EstorageData<T>;
       const time = new Date().getTime();
-      if (storageData.expire && time <= storageData.expire) {
-        return storageData.data;
-      } else {
+      if (storageData.expire && time > storageData.expire) {
         this.remove(key);
+        return null;
+      } else {
+        return storageData.data;
       }
     }
-    return '';
+    return null;
   }
   set(key: string, data: unknown, config: EstorageConfig = {}) {
     key = this.getKey(key);
