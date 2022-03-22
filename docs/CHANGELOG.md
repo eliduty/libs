@@ -1,4 +1,6 @@
 # 更新日志
+### [1.2.2](https://github.com/eliduty/libs/compare/v1.2.1...v1.2.2) (2022-03-22)
+
 ### [1.2.1](https://github.com/eliduty/libs/compare/v1.2.0...v1.2.1) (2022-03-22)
 
 ## [1.2.0](https://github.com/eliduty/libs/compare/v1.1.0...v1.2.0) (2022-02-12)
