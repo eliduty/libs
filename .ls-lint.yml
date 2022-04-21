@@ -9,3 +9,4 @@ ls:
 ignore:
   - node_modules
   - dist
+  - packages/request/node_modules
