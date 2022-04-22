@@ -1,11 +1,3 @@
-/*
- * @Author: eliduty
- * @Github: https://github.com/eliduty
- * @Date: 2022-04-19 09:06:44
- * @LastEditors: eliduty
- * @LastEditTime: 2022-04-20 22:30:11
- * @Description:
- */
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export interface RequestInterceptor {

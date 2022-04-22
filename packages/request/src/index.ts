@@ -9,7 +9,7 @@ export enum RequestMethod {
   POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE',
-  PATCH = 'PATCH'
+  PATCH = 'PATCH',
 }
 
 export const ERROR_CODE = '__ERROR_CODE__'; //错误固定标志位
