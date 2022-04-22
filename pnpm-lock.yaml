@@ -58,14 +58,18 @@ importers:
 
   example/vite:
     specifiers:
+      '@eliduty/request': workspace:^1.0.0
       '@eliduty/storage': workspace:*
       '@vitejs/plugin-vue': ^2.2.0
+      axios: ^0.26.1
       typescript: ^4.5.4
       vite: ^2.8.0
       vue: ^3.2.25
       vue-tsc: ^0.29.8
     dependencies:
+      '@eliduty/request': link:../../packages/request
       '@eliduty/storage': link:../../packages/storage
+      axios: 0.26.1
       vue: 3.2.30
     devDependencies:
       '@vitejs/plugin-vue': 2.2.0_vite@2.8.0+vue@3.2.30
@@ -753,7 +757,6 @@ packages:
       follow-redirects: 1.14.9
     transitivePeerDependencies:
       - debug
-    dev: true
 
   /babel-walk/3.0.0-canary-5:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
@@ -1803,7 +1806,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: true
 
   /fs-access/1.0.1:
     resolution: {integrity: sha1-1qh/JiJxzv6+wwxVNAf7mV2od3o=}

@@ -44,3 +44,5 @@ export interface RequestConfig extends AxiosRequestConfig {
   transform?: RequestTransform;
   ignoreCancelToken?: boolean;
 }
+
+export type RequestResponse<T = unknown> = AxiosResponse<T>;

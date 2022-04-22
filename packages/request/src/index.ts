@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Cancel from './cancel';
+import { Cancel } from './cancel';
 import { isFunction } from '@eliduty/type';
 import type { RequestConfig } from './types';
 import type { AxiosInstance, AxiosRequestHeaders, AxiosError } from 'axios';

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { isFunction } from '@eliduty/type';
-import type { ErequestConfig } from './types';
+import type { RequestConfig } from './types';
 import type { Canceler } from 'axios';
 
-export const generatePendingKey = (config: ErequestConfig) => [config.method, config.url].join('&');
+export const generatePendingKey = (config: RequestConfig) => [config.method, config.url].join('&');
 
-export default class Cancel {
+export class Cancel {
   private pendingMap: Map<string, Canceler>;
   constructor() {
     this.pendingMap = new Map();
@@ -14,7 +14,7 @@ export default class Cancel {
    * 添加请求
    * @param {*} config
    */
-  add(config: ErequestConfig) {
+  add(config: RequestConfig) {
     this.remove(config);
     const pendingKey = generatePendingKey(config);
     config.cancelToken =
@@ -27,7 +27,7 @@ export default class Cancel {
    * 移除请求
    * @param {*} config
    */
-  remove(config: ErequestConfig) {
+  remove(config: RequestConfig) {
     const pendingKey = generatePendingKey(config);
     if (this.pendingMap.has(pendingKey)) {
       const cancel = this.pendingMap.get(pendingKey);

@@ -3,12 +3,14 @@
   // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
   import HelloWorld from './components/HelloWorld.vue';
   import Storage from './components/Storage.vue';
+  import Request from './components/Request.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <Storage></Storage>
+  <Request></Request>
 </template>
 
 <style>
