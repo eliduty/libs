@@ -1,47 +1,47 @@
 {
-  "name": "@eliduty/request",
-  "version": "1.0.0",
-  "author": "eliduty<eliduty@qq.com>",
-  "description": "基于axios封装的请求库",
-  "license": "MIT",
-  "keywords": [
-    "axios",
-    "util",
-    "lib",
-    "request",
-    "XMLHttpRequest",
-    "http",
-    "ajax"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/*"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eliduty/libs.git",
-    "directory": "packages/type"
-  },
-  "bugs": {
-    "url": "https://github.com/eliduty/libs/issues"
-  },
-  "contributors": [
-    {
-      "name": "eliduty",
-      "email": "eliduty@qq.com",
-      "url": "https://github.com/eliduty"
-    }
-  ],
-  "homepage": "https://github.com/eliduty/libs/tree/main/packages/request#readme",
-  "dependencies": {
-    "@eliduty/type": "workspace:^1.0.1-0"
-  },
-  "peerDependencies": {
-    "axios": "^0.26.1"
-  }
+	"name": "@eliduty/request",
+	"version": "1.0.1-0",
+	"author": "eliduty<eliduty@qq.com>",
+	"description": "基于axios封装的请求库",
+	"license": "MIT",
+	"keywords": [
+		"axios",
+		"util",
+		"lib",
+		"request",
+		"XMLHttpRequest",
+		"http",
+		"ajax"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/*"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eliduty/libs.git",
+		"directory": "packages/type"
+	},
+	"bugs": {
+		"url": "https://github.com/eliduty/libs/issues"
+	},
+	"contributors": [
+		{
+			"name": "eliduty",
+			"email": "eliduty@qq.com",
+			"url": "https://github.com/eliduty"
+		}
+	],
+	"homepage": "https://github.com/eliduty/libs/tree/main/packages/request#readme",
+	"dependencies": {
+		"@eliduty/type": "workspace:^1.0.1-0"
+	},
+	"peerDependencies": {
+		"axios": "^0.26.1"
+	}
 }
