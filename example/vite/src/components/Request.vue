@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getDepartmentList } from '../apis';
+import { getDepartmentList } from '@/apis';
 
 
 const handleSendRequest = () => {

@@ -1,6 +1,7 @@
 import Request, { ERROR_CODE } from '@eliduty/request';
-import { ENV } from './env';
 import type { RequestInterceptor, RequestTransform, RequestResponse } from '@eliduty/request';
+import { ENV } from '@/utils/env';
+
 
 const { VITE_APP_API_ROOT: baseURL } = ENV;
 
@@ -16,6 +17,7 @@ const interceptors: RequestInterceptor = {
     return config;
   },
   responseInterceptorCatch: error => {
+    console.log(error)
     const { response } = error;
     if (response) {
       // 非成功状态码
