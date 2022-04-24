@@ -1,4 +1,18 @@
 # 更新日志
+## [1.3.0](https://github.com/eliduty/libs/compare/v1.2.2...v1.3.0) (2022-04-24)
+
+
+### 新功能
+
+* 新增基于axios请求封装 ([563f468](https://github.com/eliduty/libs/commit/563f46862f4e05e0673a2520ca5d115cd30f930a))
+* 增加request测试 ([75f842a](https://github.com/eliduty/libs/commit/75f842a71872a5e1c6a53fd36b194fe74904a0e7))
+
+
+### Bug修复
+
+* 优化构建结果 ([ff6d351](https://github.com/eliduty/libs/commit/ff6d351b490bdb0052d04d07aa26784a61fa217f))
+* 优化路径别名编辑器报错问题 ([e388ccf](https://github.com/eliduty/libs/commit/e388ccf8d2532b671ee337dfeb986c867d8f4e4d))
+
 ### [1.2.2](https://github.com/eliduty/libs/compare/v1.2.1...v1.2.2) (2022-03-22)
 
 ### [1.2.1](https://github.com/eliduty/libs/compare/v1.2.0...v1.2.1) (2022-03-22)
