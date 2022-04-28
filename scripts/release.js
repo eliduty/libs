@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-04-28 15:13:35
+ * @LastEditTime: 2022-04-28 15:19:16
  * @Description:
  */
 
@@ -51,9 +51,9 @@ async function main() {
   await commitPackagesMessage(versionInfo, !isSuccess);
   // 发布包
   await publishPackage(versionInfo);
+  step('\n发布完成！');
   // 提交git
   await commitGit();
-  step('\n发布完成！');
 }
 
 /**
@@ -280,6 +280,12 @@ async function pushlish(versionInfo) {
 }
 
 async function commitGit() {
-  await run('git', ['push']);
-  await run('git', ['push', '--follow-tags origin main']);
+  step(`\n提交git信息...`);
+  try {
+    await run('git', ['push']);
+    await run('git', ['push', '--follow-tags origin main']);
+  } catch (err) {
+    console.log(chalk.red('github网络连接异常，请尝试手动提交！'));
+  }
+
 }
