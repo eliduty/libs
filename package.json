@@ -1,6 +1,6 @@
 {
   "name": "@eliduty/libs",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": "eliduty<eliduty@qq.com>",
   "description": "常用工具函数库",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "build": "node scripts/build.js",
     "release:pre": "node scripts/release.js -p",
     "release": "node scripts/release.js",
-    "version": "standard-version -i docs/CHANGELOG.md && git push --follow-tags origin main",
+    "version": "standard-version -i docs/CHANGELOG.md",
     "dev:vite": "pnpm run dev --filter vite"
   },
   "repository": {
