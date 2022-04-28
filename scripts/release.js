@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-11 22:42:20
+ * @LastEditTime: 2022-04-28 15:13:35
  * @Description:
  */
 
@@ -51,6 +51,8 @@ async function main() {
   await commitPackagesMessage(versionInfo, !isSuccess);
   // 发布包
   await publishPackage(versionInfo);
+  // 提交git
+  await commitGit();
   step('\n发布完成！');
 }
 
@@ -248,7 +250,6 @@ async function commitPackagesMessage(releasePackagesVersionInfo, isRollBack) {
       step('\nCommitting changes...');
       await run('git', ['add', '-A']);
       await run('git', ['commit', '-m', `chore(release): ${releaseCommit.join(' ')}`]);
-      await run('git', ['push'])
     } else {
       console.log('No changes to commit.');
     }
@@ -276,4 +277,9 @@ async function publishPackage(versionInfoList) {
 async function pushlish(versionInfo) {
   step(`\n正在发布${versionInfo.package}...`);
   await run('pnpm', ['publish', '--filter', versionInfo.package, '--access', 'public']);
+}
+
+async function commitGit() {
+  await run('git', ['push']);
+  await run('git', ['push', '--follow-tags origin main']);
 }
