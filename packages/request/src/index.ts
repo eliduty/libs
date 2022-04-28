@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { Cancel } from './cancel';
 import { isFunction } from '@eliduty/type';
-import type { RequestConfig } from './types';
-import type { AxiosInstance, AxiosRequestHeaders, AxiosError } from 'axios';
+import type { AxiosInstance, AxiosRequestHeaders, AxiosError, AxiosRequestConfig, AxiosResponse  } from 'axios';
 
 export enum RequestMethod {
   GET = 'GET',
@@ -84,23 +83,23 @@ export default class Request {
    */
   request<T = unknown>(config: RequestConfig): Promise<T> {
     let options = Object.assign({}, this.options, config);
-    if (options.transform?.requestTransform) {
-      options = options.transform.requestTransform(options);
+    if (options.transforms?.requestTransform) {
+      options = options.transforms.requestTransform(options);
     }
     return new Promise((resolve, reject) => {
       this.instance
         .request<T>(options)
         .then(res => {
           // 在网络错误的时候没有data
-          if (res?.data && options.transform?.responseTransform) {
+          if (res?.data && options.transforms?.responseTransform) {
             // 如果有返回数据，并且有返回数据转换函数
-            const transformResult = options.transform.responseTransform(res, options);
+            const transformResult = options.transforms.responseTransform(res, options);
             transformResult === ERROR_CODE ? reject(res.data) : resolve(transformResult);
           }
           resolve(res as unknown as Promise<T>);
         })
         .catch((err: AxiosError) => {
-          if (options.transform?.responseTransformCatch) reject(options.transform.responseTransformCatch(err, options));
+          if (options.transforms?.responseTransformCatch) reject(options.transforms.responseTransformCatch(err, options));
           reject(err);
         });
     });
@@ -126,3 +125,43 @@ export default class Request {
     return this.request<T>({ method: RequestMethod.PATCH, url, data, ...config });
   }
 }
+
+
+export interface RequestInterceptor {
+  /**请求拦截器 */
+  requestInterceptor?: (config: RequestConfig) => RequestConfig;
+
+  /**请求错误拦截器 */
+  requestInterceptorCatch?: (error: AxiosError) => Promise<any>;
+
+  /**响应拦截器 */
+  responseInterceptor?: (response: AxiosResponse) => AxiosResponse;
+
+  /**响应错误拦截器 */
+  responseInterceptorCatch?: (error: AxiosError) => Promise<any>;
+}
+
+export interface RequestTransform {
+  /**请求配置转换 */
+  requestTransform?: (config: RequestConfig) => RequestConfig;
+
+  /**响应结果转换 */
+  responseTransform?: (response: AxiosResponse, config: RequestConfig) => any;
+
+  /**响应错误转换 */
+  responseTransformCatch?: <T = unknown>(error: AxiosError, config: RequestConfig) => Promise<T>;
+}
+
+export interface RequestConfig extends AxiosRequestConfig {
+  /**拦截器 */
+  interceptors?: RequestInterceptor;
+
+  /**转换器 */
+  transforms?: RequestTransform;
+
+  /**忽略请求取消 */
+  ignoreCancelToken?: boolean;
+}
+
+/** 响应结果类型 */
+export type RequestResponse<T = unknown> = AxiosResponse<T>;

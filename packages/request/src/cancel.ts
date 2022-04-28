@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { isFunction } from '@eliduty/type';
-import type { RequestConfig } from './types';
 import type { Canceler } from 'axios';
+import type { RequestConfig } from './index';
 
 export const generatePendingKey = (config: RequestConfig) => [config.method, config.url].join('&');
 

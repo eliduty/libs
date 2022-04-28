@@ -31,7 +31,7 @@ const interceptors: RequestInterceptor = {
   },
 };
 
-const transform: RequestTransform = {
+const transforms: RequestTransform = {
   requestTransform(config) {
     config.headers = {
       ...config.headers,
@@ -66,7 +66,7 @@ export interface Result<T = any> {
 const request = new Request({
   baseURL,
   timeout: 10 * 1000,
-  transform,
+  transforms,
   interceptors,
 });
 
