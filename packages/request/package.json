@@ -42,6 +42,6 @@
 		"@eliduty/type": "workspace:^1.0.1-0"
 	},
 	"peerDependencies": {
-		"axios": "^0.26.1"
+		"axios": ">=0.26.1"
 	}
 }
