@@ -1,4 +1,60 @@
 # 更新日志
+## [1.4.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.4.0) (2022-08-12)
+
+
+### 新功能
+
+* 新增npmrc配置文件 ([02b6401](https://github.com/eliduty/libs/commit/02b6401b23bef2e64de7ffe439dae48252cf4cfa))
+
+
+### Bug修复
+
+* 升级request ([e19ca6c](https://github.com/eliduty/libs/commit/e19ca6c8a2b353cb708ae0d50fa355fe0c95cbf6))
+* 修改废弃的依赖 ([094ebdb](https://github.com/eliduty/libs/commit/094ebdbb62218aef6c4a805b8147d2774299dbae))
+* 修改request依赖的axios版本 ([098b43e](https://github.com/eliduty/libs/commit/098b43e1e8598200f8d35fdf375aa3f6f90a56b4))
+
+## [1.6.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.6.0) (2022-08-12)
+
+
+### 新功能
+
+* 新增npmrc配置文件 ([02b6401](https://github.com/eliduty/libs/commit/02b6401b23bef2e64de7ffe439dae48252cf4cfa))
+
+
+### Bug修复
+
+* 升级request ([e19ca6c](https://github.com/eliduty/libs/commit/e19ca6c8a2b353cb708ae0d50fa355fe0c95cbf6))
+* 修改废弃的依赖 ([094ebdb](https://github.com/eliduty/libs/commit/094ebdbb62218aef6c4a805b8147d2774299dbae))
+* 修改request依赖的axios版本 ([098b43e](https://github.com/eliduty/libs/commit/098b43e1e8598200f8d35fdf375aa3f6f90a56b4))
+
+## [1.5.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.5.0) (2022-08-12)
+
+
+### 新功能
+
+* 新增npmrc配置文件 ([02b6401](https://github.com/eliduty/libs/commit/02b6401b23bef2e64de7ffe439dae48252cf4cfa))
+
+
+### Bug修复
+
+* 升级request ([e19ca6c](https://github.com/eliduty/libs/commit/e19ca6c8a2b353cb708ae0d50fa355fe0c95cbf6))
+* 修改废弃的依赖 ([094ebdb](https://github.com/eliduty/libs/commit/094ebdbb62218aef6c4a805b8147d2774299dbae))
+* 修改request依赖的axios版本 ([098b43e](https://github.com/eliduty/libs/commit/098b43e1e8598200f8d35fdf375aa3f6f90a56b4))
+
+## [1.4.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.4.0) (2022-08-12)
+
+
+### 新功能
+
+* 新增npmrc配置文件 ([02b6401](https://github.com/eliduty/libs/commit/02b6401b23bef2e64de7ffe439dae48252cf4cfa))
+
+
+### Bug修复
+
+* 升级request ([e19ca6c](https://github.com/eliduty/libs/commit/e19ca6c8a2b353cb708ae0d50fa355fe0c95cbf6))
+* 修改废弃的依赖 ([094ebdb](https://github.com/eliduty/libs/commit/094ebdbb62218aef6c4a805b8147d2774299dbae))
+* 修改request依赖的axios版本 ([098b43e](https://github.com/eliduty/libs/commit/098b43e1e8598200f8d35fdf375aa3f6f90a56b4))
+
 ### [1.3.1](https://github.com/eliduty/libs/compare/v1.3.0...v1.3.1) (2022-04-28)
 
 ## [1.3.0](https://github.com/eliduty/libs/compare/v1.2.2...v1.3.0) (2022-04-24)
