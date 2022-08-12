@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@eliduty/request": "workspace:^1.0.0",
+    "@eliduty/request": "workspace:^1.0.1",
     "@eliduty/storage": "workspace:*",
     "axios": "^0.26.1",
     "vue": "^3.2.25"
