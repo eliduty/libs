@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-04-28 15:19:16
+ * @LastEditTime: 2022-08-12 22:33:39
  * @Description:
  */
 
@@ -46,7 +46,7 @@ async function main() {
   // 更新子包版本
   await updatePackages(versionInfo);
   // 更新主包版本号、git tag 、生成changelog
-  const isSuccess = await updateMainPackage();
+  const isSuccess = await updateMainPackage(releaseVersion);
   // 根据主包发布结果，处理子包git message
   await commitPackagesMessage(versionInfo, !isSuccess);
   // 发布包
@@ -227,9 +227,9 @@ async function updatePackages(releasePackagesVersionInfo) {
 /**
  * 更新主包
  */
-async function updateMainPackage() {
+async function updateMainPackage(releaseVersion) {
   step('\n更新主包信息...');
-  const isSuccess = await run('pnpm', ['run', 'version']).catch(() => false);
+  const isSuccess = await run('pnpm', ['version', releaseVersion]).catch(() => false);
   return !!isSuccess;
 }
 
@@ -287,5 +287,4 @@ async function commitGit() {
   } catch (err) {
     console.log(chalk.red('github网络连接异常，请尝试手动提交！'));
   }
-
 }
