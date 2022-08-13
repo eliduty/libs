@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-08-12 22:33:39
+ * @LastEditTime: 2022-08-13 10:09:31
  * @Description:
  */
 
@@ -283,7 +283,7 @@ async function commitGit() {
   step(`\n提交git信息...`);
   try {
     await run('git', ['push']);
-    await run('git', ['push', '--follow-tags origin main']);
+    await run('git', ['push', 'origin','--tags']);
   } catch (err) {
     console.log(chalk.red('github网络连接异常，请尝试手动提交！'));
   }
