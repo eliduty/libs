@@ -1,16 +1,18 @@
-
 import execa from 'execa';
 import chalk from 'chalk';
 import fse from 'fs-extra';
 import { resolve } from 'path';
-import { runParallel} from './utils'
+import { runParallel } from './utils';
 import { getPackagesName, getPackageDistPath, getPackage, getPackageDir, getPackageDistTypesPath, getFilesContent } from './utils/package';
-const { remove, writeFile } =fse
-const args= require('minimist')(process.argv.slice(2));
-const targets:string[]  = args._;
+import minimist from 'minimist';
+import { cpus } from 'node:os';
+const { remove, writeFile } = fse;
+const args = minimist(process.argv.slice(2));
+const targets: string[] = args._;
+
 // const commit = execa.sync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 7);
 // console.log(commit);
-const cupNumber = require('os').cpus().length;
+const cupNumber = cpus().length;
 const packages = getPackagesName('packages');
 
 run();
@@ -29,7 +31,7 @@ async function run() {
  * 构建方法
  * @param {*} pkgName
  */
-async function build(pkgName:string) {
+async function build(pkgName: string) {
   // 清除dist目录
   await removeDist(pkgName);
   // rollup打包
@@ -44,7 +46,7 @@ async function build(pkgName:string) {
  * 移除打包生成的文件
  * @param {*} pkgName
  */
-async function removeDist(pkgName:string) {
+async function removeDist(pkgName: string) {
   const distDir = getPackageDistPath(pkgName);
   await remove(distDir);
 }
@@ -53,7 +55,7 @@ async function removeDist(pkgName:string) {
  * 合并package的类型声明文件
  * @param {*} pkgName
  */
-async function contactTypes(pkgName:string) {
+async function contactTypes(pkgName: string) {
   const pkg = getPackage(pkgName);
   if (!pkg.types) return;
   // 获取输出目录
@@ -70,8 +72,9 @@ async function contactTypes(pkgName:string) {
  * 清除对应包声明文件
  * @param {*} pkgName
  */
-async function removeTypeDefinition(pkgName:string) {
+async function removeTypeDefinition(pkgName: string) {
   const distDir = getPackageDistPath(pkgName);
+  const removeFloder = ['packages', 'ts'];
   // 清除ts生成的声明文件
-  await remove(`${distDir}/packages`);
+  removeFloder.forEach(async item => await remove(`${distDir}/${item}`));
 }

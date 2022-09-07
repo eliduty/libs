@@ -147,7 +147,7 @@ export interface RequestTransform {
   requestTransform?: <D = any>(config: RequestConfig<D>) => RequestConfig;
 
   /**响应结果转换 */
-  responseTransform?: <T = any, D = any>(response: RequestResponse, config: RequestConfig) => any;
+  responseTransform?: <T = any, D = any>(response: RequestResponse<T,D>, config: RequestConfig) => any;
 
   /**响应错误转换 */
   responseTransformCatch?: <T = any, D = any>(error: RequestResponseError<T, D>, config: RequestConfig) => Promise<T>;
