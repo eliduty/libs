@@ -1,25 +1,28 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "sourceMap": false,
     "target": "es2016",
-    "useDefineForClassFields": false,
+    "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "jsx": "preserve",
     "lib": ["esnext", "dom"],
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
     "types": ["node"],
-    "rootDir": ".",
     "paths": {
       "@eliduty/*": ["packages/*/src"]
     }
   },
-  "include": ["packages/*/src"]
+  "include": ["packages/*/src","ts/**/*",]
 }
