@@ -11,6 +11,8 @@
     "release": "node scripts/release.js",
     "version": "standard-version -i docs/CHANGELOG.md",
     "dev:vite": "pnpm run dev --filter vite",
+
+    "release:ts":"tsx ts/release.ts",
     "build:packages": "tsx ts/build.ts",
     "dev:packages": "nodemon --watch packages/**/*.ts --ignore dist/* --exec \"tsx\" ts/build.ts"
   },
