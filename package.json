@@ -10,7 +10,7 @@
     "release:pre": "node scripts/release.js -p",
     "release": "node scripts/release.js",
     "version": "standard-version -i docs/CHANGELOG.md",
-    "dev:vite": "pnpm run dev --filter vite",
+    "dev:vite": "pnpm --filter vite dev ",
 
     "release:ts":"tsx ts/release.ts",
     "build:packages": "tsx ts/build.ts",
