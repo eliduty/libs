@@ -1,4 +1,4 @@
-import axios from 'axios';
+import rawRequest from 'axios';
 import { Cancel } from './cancel';
 import { isFunction } from '@eliduty/type';
 import type { AxiosInstance, AxiosRequestHeaders, AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -11,7 +11,7 @@ export enum RequestMethod {
   PATCH = 'PATCH',
 }
 /** 原始axios请求 */
-export const request = axios;
+export const axios = rawRequest;
 
 export const ERROR_CODE = '__ERROR_CODE__'; //错误固定标志位
 
@@ -147,7 +147,7 @@ export interface RequestTransform {
   requestTransform?: <D = any>(config: RequestConfig<D>) => RequestConfig;
 
   /**响应结果转换 */
-  responseTransform?: <T = any, D = any>(response: RequestResponse<T,D>, config: RequestConfig) => any;
+  responseTransform?: <T = any, D = any>(response: RequestResponse<T, D>, config: RequestConfig) => any;
 
   /**响应错误转换 */
   responseTransformCatch?: <T = any, D = any>(error: RequestResponseError<T, D>, config: RequestConfig) => Promise<T>;
