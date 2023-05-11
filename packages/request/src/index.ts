@@ -1,7 +1,7 @@
 import rawRequest from 'axios';
 import { Cancel } from './cancel';
 import { isFunction } from '@eliduty/type';
-import type { AxiosInstance, AxiosRequestHeaders, AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosInstance, AxiosRequestHeaders, AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 
 export enum RequestMethod {
   GET = 'GET',
@@ -17,7 +17,7 @@ export const ERROR_CODE = '__ERROR_CODE__'; //错误固定标志位
 
 export default class Request {
   private instance: RequestInstance;
-  private options: RequestConfig;
+  private options: Partial<RequestConfig>;
 
   constructor(options: RequestConfig) {
     this.options = options;
@@ -83,7 +83,7 @@ export default class Request {
    * @param config
    * @returns
    */
-  request<T = unknown>(config: RequestConfig): Promise<T> {
+  request<T = unknown>(config: Partial<RequestConfig>): Promise<T> {
     let options = Object.assign({}, this.options, config);
     if (options.transforms?.requestTransform) {
       options = options.transforms.requestTransform(options);
@@ -144,16 +144,16 @@ export interface RequestInterceptor {
 
 export interface RequestTransform {
   /**请求配置转换 */
-  requestTransform?: <D = any>(config: RequestConfig<D>) => RequestConfig;
+  requestTransform?: <D = any>(config: Partial<RequestConfig<D>>) => RequestConfig;
 
   /**响应结果转换 */
-  responseTransform?: <T = any, D = any>(response: RequestResponse<T, D>, config: RequestConfig) => any;
+  responseTransform?: <T = any, D = any>(response: RequestResponse<T, D>, config: Partial<RequestConfig>) => any;
 
   /**响应错误转换 */
-  responseTransformCatch?: <T = any, D = any>(error: RequestResponseError<T, D>, config: RequestConfig) => Promise<T>;
+  responseTransformCatch?: <T = any, D = any>(error: RequestResponseError<T, D>, config: Partial<RequestConfig>) => Promise<T>;
 }
 
-export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
+export interface RequestConfig<D = any> extends InternalAxiosRequestConfig<D> {
   /**拦截器 */
   interceptors?: RequestInterceptor;
 

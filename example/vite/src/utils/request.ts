@@ -2,10 +2,7 @@ import Request, { ERROR_CODE } from '@eliduty/request';
 import type { RequestInterceptor, RequestTransform, RequestResponse } from '@eliduty/request';
 import { ENV } from '@/utils/env';
 
-
 const { VITE_APP_API_ROOT: baseURL } = ENV;
-
-console.log(ENV)
 
 const interceptors: RequestInterceptor = {
   requestInterceptor: config => {
@@ -17,7 +14,7 @@ const interceptors: RequestInterceptor = {
     return config;
   },
   responseInterceptorCatch: error => {
-    console.log(error)
+    console.log(error);
     const { response } = error;
     if (response) {
       // 非成功状态码
@@ -39,8 +36,8 @@ const transforms: RequestTransform = {
     };
     return config;
   },
-  responseTransform({ data }: RequestResponse<Result>, config) {
-    const { result, error } = data;
+  responseTransform({ data }, config) {
+    const { result, error } = data as Result;
     console.log('data', data, config);
 
     if (!error) {
