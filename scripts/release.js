@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-02-10 14:02:10
  * @LastEditors: eliduty
- * @LastEditTime: 2022-08-13 10:09:31
+ * @LastEditTime: 2023-05-11 14:50:36
  * @Description:
  */
 
@@ -167,11 +167,11 @@ async function computedVersion(packages, releaseVersion) {
     }
   }
   let versionInfo = [];
-  packages.forEach(package => {
-    const current = getPackage(package).version;
-    const target = isCustom ? customVersion : semver.inc(getPackage(package).version, releaseVersion);
+  packages.forEach(pkg => {
+    const current = getPackage(pkg).version;
+    const target = isCustom ? customVersion : semver.inc(getPackage(pkg).version, releaseVersion);
     versionInfo.push({
-      package,
+      package:pkg,
       current,
       target,
       isValid: semver.lt(current, target),
