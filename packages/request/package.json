@@ -1,6 +1,6 @@
 {
 	"name": "@eliduty/request",
-	"version": "1.0.3",
+	"version": "1.0.2",
 	"author": "eliduty<eliduty@qq.com>",
 	"description": "基于axios封装的请求库",
 	"license": "MIT",
@@ -39,7 +39,7 @@
 	],
 	"homepage": "https://github.com/eliduty/libs/tree/main/packages/request#readme",
 	"dependencies": {
-		"@eliduty/type": "workspace:^1.0.1"
+		"@eliduty/type": "^1.0.1"
 	},
 	"peerDependencies": {
 		"axios": "^1.4.0"
