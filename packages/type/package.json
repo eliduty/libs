@@ -1,6 +1,6 @@
 {
 	"name": "@eliduty/type",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "eliduty<eliduty@qq.com>",
 	"description": "该工具库主要是类型判断工具库",
 	"license": "MIT",
@@ -11,20 +11,20 @@
 		"type",
 		"typeof"
 	],
-  "type": "module",
+	"type": "module",
 	"main": "dist/index.cjs",
 	"types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./*": "./*"
-  },
-  "scripts": {
-    "build": "unbuild",
-    "release": "release-it"
-  },
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./*": "./*"
+	},
+	"scripts": {
+		"build": "unbuild",
+		"release": "release-it"
+	},
 	"files": [
 		"dist/*"
 	],
