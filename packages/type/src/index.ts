@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2021-03-05 09:48:24
  * @LastEditors: eliduty
- * @LastEditTime: 2023-05-23 17:05:44
+ * @LastEditTime: 2023-05-23 18:41:00
  * @Description:类型判断工具库
  */
 const toString = Object.prototype.toString;
@@ -15,6 +15,7 @@ const toString = Object.prototype.toString;
  * @returns
  */
 export function is(val: unknown, type: string) {
+  console.log(toString.call(val));
   return toString.call(val) === `[object ${type}]`;
 }
 
@@ -24,7 +25,7 @@ export function is(val: unknown, type: string) {
  * @returns
  */
 export function isDef(val: unknown) {
-  return typeof val !== 'undefined';
+  return is(val, 'Undefined');
 }
 
 /**
@@ -89,21 +90,12 @@ export function isNull(val: unknown): val is null {
 }
 
 /**
- * 判断变量是否为undefined和null
- * @param val
- * @returns
- */
-export function isNullAndUnDef(val: unknown): val is null | undefined {
-  return isUnDef(val) && isNull(val);
-}
-
-/**
  * 判断变量是否为undefined或者null
  * @param val
  * @returns
  */
-export function isNullOrUnDef(val: unknown): val is null | undefined {
-  return isUnDef(val) || isNull(val);
+export function isNullOrDef(val: unknown): val is null | undefined {
+  return isDef(val) || isNull(val);
 }
 
 /**
@@ -113,15 +105,6 @@ export function isNullOrUnDef(val: unknown): val is null | undefined {
  */
 export function isNumber(val: unknown): val is number {
   return is(val, 'Number');
-}
-
-/**
- * 判断是否为Promise
- * @param val
- * @returns
- */
-export function isPromise(val: unknown): val is Promise<any> {
-  return is(val, 'Promise') && isObject(val) && isFunction(val.then) && isFunction(val.catch);
 }
 
 /**
@@ -166,7 +149,7 @@ export function isRegExp(val: unknown): val is RegExp {
  * @returns
  */
 export function isArray(val: any): val is any[] {
-  return val && Array.isArray(val);
+  return !!val && Array.isArray(val);
 }
 
 /**
