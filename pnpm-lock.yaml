@@ -90,7 +90,7 @@ importers:
   packages/request:
     dependencies:
       '@eliduty/type':
-        specifier: ^1.0.1
+        specifier: workspace:*
         version: link:../type
       axios:
         specifier: ^1.4.0

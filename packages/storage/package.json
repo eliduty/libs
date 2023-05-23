@@ -16,8 +16,18 @@
 		"ESM"
 	],
 	"main": "dist/index.js",
-	"module": "dist/index.esm.js",
 	"types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "release": "release-it"
+  },
 	"files": [
 		"dist/*"
 	],
