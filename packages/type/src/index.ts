@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2021-03-05 09:48:24
  * @LastEditors: eliduty
- * @LastEditTime: 2022-02-12 17:21:07
+ * @LastEditTime: 2023-05-23 17:05:44
  * @Description:类型判断工具库
  */
 const toString = Object.prototype.toString;
@@ -51,6 +51,10 @@ export function isObject(val: unknown): val is Record<string, unknown> {
  * @returns
  */
 export function isEmpty(val: unknown) {
+  if (val === null || val === undefined) {
+    return true;
+  }
+
   if (isArray(val) || isString(val)) {
     return val.length === 0;
   }
