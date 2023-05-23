@@ -1,28 +1,25 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": ["@tsconfig/node-lts/tsconfig.json"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es2016",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "lib": ["esnext", "dom"],
-    "moduleResolution": "node",
-    "strict": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "isolatedModules": false,
-    "esModuleInterop": true,
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "types": ["node"],
+    "verbatimModuleSyntax": true,
+    "lib": [
+      // Target ES2020 to align with Vite.
+      // <https://vitejs.dev/config/build-options.html#build-target>
+      // Support for newer versions of language built-ins are
+      // left for the users to include, because that would require:
+      //   - either the project doesn't need to support older versions of browsers;
+      //   - or the project has properly included the necessary polyfills.
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+      // No `ScriptHost` because Vue 3 dropped support for IE
+    ],
     "paths": {
-      "@eliduty/*": ["packages/*/src"]
+      "@eliduty/request": ["./packages/request/src/index.ts"],
+      "@eliduty/storage": ["./packages/storage/src/index.ts"],
+      "@eliduty/type": ["./packages/type/src/index.ts"],
+      "@eliduty/validator": ["./packages/validator/src/index.ts"]
     }
   },
-  "include": ["packages/*/src","ts/**/*",]
+  "exclude": ["**/dist/**", "**/node_modules/**"]
 }
