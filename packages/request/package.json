@@ -13,6 +13,7 @@
     "http",
     "ajax"
   ],
+  "type": "module",
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
   "exports": {
