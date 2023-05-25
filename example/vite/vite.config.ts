@@ -1,6 +1,6 @@
 import * as path from 'path';
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig, loadEnv } from 'vite';
+import vue from '@vitejs/plugin-vue';
 const resolve = (p: string) => path.resolve(p);
 
 // https://vitejs.dev/config/
@@ -11,8 +11,8 @@ export default ({ mode }) => {
   return defineConfig({
     resolve: {
       alias: {
-        '@': resolve('./src')
-      }
+        '@': resolve('./src'),
+      },
     },
     plugins: [vue()],
     server: {
@@ -23,10 +23,9 @@ export default ({ mode }) => {
         // 代理配置
         [VITE_APP_API_ROOT]: {
           target: VITE_APP_API_HOST, // 你接口的域名
-          changeOrigin: true
-        }
-      }
+          changeOrigin: true,
+        },
+      },
     },
-  })
-
-}
+  });
+};
