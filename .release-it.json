@@ -1,7 +1,8 @@
 {
   "git": {
     "commitMessage": "chore: release v${version}",
-    "requireCleanWorkingDir": false
+    "requireCleanWorkingDir": false,
+    "tagAnnotation": "chore(release): ${version}"
   },
   "github": {
     "release": true,
