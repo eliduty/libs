@@ -10,11 +10,23 @@
       "submit": true
     }
   },
-  "plugin": {
+  "plugins": {
     "@release-it/conventional-changelog": {
       "infile": "docs/CHANGELOG.md",
-      "preset": "angular",
-      "ignoreRecommendedBump": true
+      "header": "更新日志",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "新功能"
+          },
+          {
+            "type": "fix",
+            "section": "Bug修复"
+          }
+        ]
+      }
     }
   }
 }
