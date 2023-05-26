@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2021-03-05 09:48:24
  * @LastEditors: eliduty
- * @LastEditTime: 2023-05-23 18:41:00
+ * @LastEditTime: 2023-05-24 17:32:37
  * @Description:类型判断工具库
  */
 const toString = Object.prototype.toString;
@@ -15,7 +15,6 @@ const toString = Object.prototype.toString;
  * @returns
  */
 export function is(val: unknown, type: string) {
-  console.log(toString.call(val));
   return toString.call(val) === `[object ${type}]`;
 }
 
