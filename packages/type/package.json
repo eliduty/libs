@@ -1,50 +1,51 @@
 {
-	"name": "@eliduty/type",
-	"version": "1.0.2",
-	"author": "eliduty<eliduty@qq.com>",
-	"description": "该工具库主要是类型判断工具库",
-	"license": "MIT",
-	"keywords": [
-		"tool",
-		"util",
-		"lib",
-		"type",
-		"typeof"
-	],
-	"type": "module",
-	"main": "dist/index.cjs",
-	"types": "dist/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
-		},
-		"./*": "./*"
-	},
-	"scripts": {
-		"build": "unbuild",
-		"release": "release-it"
-	},
-	"files": [
-		"dist/*"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/eliduty/libs.git",
-		"directory": "packages/type"
-	},
-	"bugs": {
-		"url": "https://github.com/eliduty/libs/issues"
-	},
-	"contributors": [
-		{
-			"name": "eliduty",
-			"email": "eliduty@qq.com",
-			"url": "https://github.com/eliduty"
-		}
-	],
-	"homepage": "https://github.com/eliduty/libs/tree/main/packages/type#readme"
+  "name": "@eliduty/type",
+  "version": "1.0.2",
+  "author": "eliduty<eliduty@qq.com>",
+  "description": "该工具库主要是类型判断工具库",
+  "license": "MIT",
+  "keywords": [
+    "tool",
+    "util",
+    "lib",
+    "type",
+    "typeof"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "release": "release-it"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliduty/libs.git",
+    "directory": "packages/type"
+  },
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
+  "contributors": [
+    {
+      "name": "eliduty",
+      "email": "eliduty@qq.com",
+      "url": "https://github.com/eliduty"
+    }
+  ],
+  "homepage": "https://github.com/eliduty/libs/tree/main/packages/type#readme"
 }
