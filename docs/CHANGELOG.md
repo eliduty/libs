@@ -1,4 +1,36 @@
-# 更新日志
+更新日志
+
+## [1.5.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.5.0) (2023-05-31)
+
+
+### 新功能
+
+* 新增npmrc配置文件 ([02b6401](https://github.com/eliduty/libs/commit/02b6401b23bef2e64de7ffe439dae48252cf4cfa))
+* 修改构建命令为ts ([f01cdb3](https://github.com/eliduty/libs/commit/f01cdb3785459beec7d27eb5142cd2a91c8ebb10))
+
+
+### Bug修复
+
+* 到处原始请求 ([e9316b5](https://github.com/eliduty/libs/commit/e9316b54c3d720d4dda201f6bf582b61dca6221d))
+* 格式化配置文件 ([ce7d85a](https://github.com/eliduty/libs/commit/ce7d85add16b1fbdbcbb1dc7a71719a971f2401f))
+* 更新版本号 ([4873d18](https://github.com/eliduty/libs/commit/4873d18e97dc61e2df8247fa2acd4ec5bb45c1e0))
+* 升级request ([e19ca6c](https://github.com/eliduty/libs/commit/e19ca6c8a2b353cb708ae0d50fa355fe0c95cbf6))
+* 修改版本发布信息 ([0dafdd2](https://github.com/eliduty/libs/commit/0dafdd22fd676648a385a956a0982cff1fd08485))
+* 修改版本号 ([7b0a350](https://github.com/eliduty/libs/commit/7b0a350bf957afdbfd3fa147c61c5cd60b611151))
+* 修改版本号 ([538dbd8](https://github.com/eliduty/libs/commit/538dbd8b372a2dd987d0cbe88fceb32369c7be56))
+* 修改版本依赖 ([33740dd](https://github.com/eliduty/libs/commit/33740dd72e9b6253c9acf49dc6f6e95c6e281f8f))
+* 修改变量名称 ([34d1a4d](https://github.com/eliduty/libs/commit/34d1a4dbaceff4b53b46bfda2c03289b15d74ce6))
+* 修改废弃的依赖 ([094ebdb](https://github.com/eliduty/libs/commit/094ebdbb62218aef6c4a805b8147d2774299dbae))
+* 修改构建脚本 ([bb1d132](https://github.com/eliduty/libs/commit/bb1d132315105e37b03545ea49fbce1b91122b44))
+* 修改依赖版本 ([1f08e36](https://github.com/eliduty/libs/commit/1f08e36bf859311355319e81aa2ecd2b6e0ead47))
+* 修改package.json type说明 ([67aec45](https://github.com/eliduty/libs/commit/67aec456e9b45eea61283201ab794e02a37f7cf7))
+* 修改request依赖的axios版本 ([098b43e](https://github.com/eliduty/libs/commit/098b43e1e8598200f8d35fdf375aa3f6f90a56b4))
+* 修改type isEmpty判断逻辑 ([e543e4a](https://github.com/eliduty/libs/commit/e543e4abe19d7bc2caeab40f045b1dfd3d740040))
+* 优化发布脚本 ([0fecbed](https://github.com/eliduty/libs/commit/0fecbed5a54f4f77168acc8dc23c8b0f4039d31c))
+* 优化构建工具 ([f9c9494](https://github.com/eliduty/libs/commit/f9c94946745ee4cfe9897ed722d83bf73b00173b))
+* 优化request ([2b00dc9](https://github.com/eliduty/libs/commit/2b00dc920fd9288696844c0503deea5303647f11))
+
+# 
 ## [1.4.0](https://github.com/eliduty/libs/compare/v1.3.1...v1.4.0) (2022-08-12)
 
 
