@@ -1,19 +1,6 @@
 {
-  "extends": ["@tsconfig/node-lts/tsconfig.json"],
+  "extends": ["@eliduty/tsconfig"],
   "compilerOptions": {
-    "verbatimModuleSyntax": true,
-    "lib": [
-      // Target ES2020 to align with Vite.
-      // <https://vitejs.dev/config/build-options.html#build-target>
-      // Support for newer versions of language built-ins are
-      // left for the users to include, because that would require:
-      //   - either the project doesn't need to support older versions of browsers;
-      //   - or the project has properly included the necessary polyfills.
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-      // No `ScriptHost` because Vue 3 dropped support for IE
-    ],
     "paths": {
       "@eliduty/request": ["./packages/request/src/index.ts"],
       "@eliduty/storage": ["./packages/storage/src/index.ts"],
@@ -21,5 +8,6 @@
       "@eliduty/validator": ["./packages/validator/src/index.ts"]
     }
   },
-  "exclude": ["**/dist/**", "**/node_modules/**"]
+  "exclude": ["**/dist/**", "**/node_modules/**"],
+  "include": ["**/src/**/*.ts", "**/src/**/*.d.ts", "**/src/**/*.tsx", "**/src/**/*.vue"],
 }

@@ -1,20 +1,21 @@
 {
   "name": "@eliduty/libs",
   "version": "1.5.0",
-  "author": {
-    "name": "eliduty",
-    "email": "eliduty@qq.com"
-  },
+  "private": true,
   "description": "常用工具函数库",
   "keywords": [],
-  "license": "MIT",
-  "private": true,
+  "homepage": "https://github.com/eliduty/libs#readme",
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eliduty/libs.git"
   },
-  "bugs": {
-    "url": "https://github.com/eliduty/libs/issues"
+  "license": "MIT",
+  "author": {
+    "name": "eliduty",
+    "email": "eliduty@qq.com"
   },
   "contributors": [
     {
@@ -23,7 +24,7 @@
       "url": "https://github.com/eliduty"
     }
   ],
-  "homepage": "https://github.com/eliduty/libs#readme",
+  "type": "module",
   "scripts": {
     "postinstall": "simple-git-hooks",
     "build": "pnpm -r --filter=./packages/* run build",
@@ -39,14 +40,12 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@eliduty/eslint-config": "^1.0.14",
+    "@eliduty/prettier-config": "^1.0.6",
+    "@eliduty/tsconfig": "^1.0.6",
     "@release-it/conventional-changelog": "^5.1.1",
-    "@tsconfig/node-lts": "^18.12.3",
-    "@types/node": "^20.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
     "chalk": "^5.2.0",
     "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "jsdom": "^22.1.0",
     "nano-staged": "^0.8.0",
     "npm-run-all": "^4.1.5",
@@ -54,7 +53,6 @@
     "prettier": "^2.8.8",
     "release-it": "^15.11.0",
     "simple-git-hooks": "^2.8.1",
-    "stylelint": "^15.9.0",
     "taze": "^0.10.3",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
