@@ -1,0 +1,54 @@
+{
+	"name": "@eliduty/utils",
+	"version": "1.0.0",
+	"author": {
+    "name": "eliduty",
+    "email": "eliduty@qq.com"
+  },
+	"description": "该工具库主要是验证器工具类，包含了日常常用的验证工具函数",
+	"license": "MIT",
+	"keywords": [
+		"tool",
+		"util",
+		"lib",
+		"validator",
+		"RegExp"
+	],
+	"type": "module",
+	"main": "dist/index.cjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./*": "./*"
+	},
+	"scripts": {
+		"build": "unbuild",
+		"release": "release-it"
+	},
+	"files": [
+		"dist/*"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eliduty/libs.git",
+		"directory": "packages/validator"
+	},
+	"bugs": {
+		"url": "https://github.com/eliduty/libs/issues"
+	},
+	"contributors": [
+		{
+			"name": "eliduty",
+			"email": "eliduty@qq.com",
+			"url": "https://github.com/eliduty"
+		}
+	],
+	"homepage": "https://github.com/eliduty/libs/tree/main/packages/validator#readme"
+}
