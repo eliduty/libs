@@ -12,8 +12,8 @@ importers:
         specifier: ^1.0.35
         version: 1.0.35(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3)
       '@eliduty/prettier-config':
-        specifier: ^1.0.19
-        version: 1.0.19(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-packagejson@2.4.7)(prettier@3.1.1)
+        specifier: ^1.0.20
+        version: 1.0.20(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-packagejson@2.4.7)(prettier@3.1.1)
       '@eliduty/tsconfig':
         specifier: ^1.0.22
         version: 1.0.22(@tsconfig/node-lts@18.12.3)(@types/node@20.10.5)(@vue/tsconfig@0.4.0)
@@ -389,10 +389,10 @@ packages:
       - typescript
     dev: true
 
-  /@eliduty/prettier-config@1.0.19(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-packagejson@2.4.7)(prettier@3.1.1):
-    resolution: {integrity: sha512-HruAspk+/nqtd5+GA9cSQw4VN7o0THcVSCsgWe2DA8hrMuXIkbetJB2uNy9rAhmXSbFuriP9g3ckNE8FR2OGYg==}
+  /@eliduty/prettier-config@1.0.20(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-packagejson@2.4.7)(prettier@3.1.1):
+    resolution: {integrity: sha512-MqzOfvo/0Jx4QQN2bKO6GahS06uyfI1PRS5NcTpe+z/A8NPlA/YWEziKeZFuplZtu7swsb1Pli4LMjb1Von+fg==}
     peerDependencies:
-      prettier: ^2.0.0
+      prettier: ^3.0.0
       prettier-plugin-organize-imports: ^3.2.4
       prettier-plugin-packagejson: ^2.4.7
     dependencies:
