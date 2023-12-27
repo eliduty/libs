@@ -1,7 +1,9 @@
 {
   "extends": ["@eliduty/tsconfig"],
   "compilerOptions": {
+    "baseUrl": "./",
     "paths": {
+      "@mocks/*":["./mocks/*"],
       "@eliduty/request": ["./packages/request/src/index.ts"],
       "@eliduty/storage": ["./packages/storage/src/index.ts"],
       "@eliduty/type": ["./packages/type/src/index.ts"],
@@ -9,5 +11,5 @@
     }
   },
   "exclude": ["**/dist/**", "**/node_modules/**"],
-  "include": ["**/src/**/*.ts", "**/src/**/*.d.ts", "**/src/**/*.tsx", "**/src/**/*.vue"],
+  "include": ["**/src/**/*.ts", "**/src/**/*.d.ts", "**/src/**/*.tsx", "**/src/**/*.vue","types/*.d.ts","mocks/**/*.ts","**/tests/**/*.ts"],
 }
