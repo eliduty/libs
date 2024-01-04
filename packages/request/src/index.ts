@@ -36,12 +36,14 @@ interface RequestInterceptors<D = any, R = any> {
    * @returns
    */
   responseInterceptor?: <T extends R = R>(response: AxiosResponse<T, R>) => any;
+
   /**
    * 响应失败拦截器配置
    * @param err
    * @returns
    */
   responseInterceptorCatch?: (err: AxiosError<R>) => any;
+
   /**
    * 响应拦截器
    */
@@ -57,11 +59,13 @@ export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
    * 可以在实例配置，也可以单独在接口开启
    */
   ignoreDuplicateRequest?: boolean;
+
   /**
    * 设置在多长时间内不允许发送重复请求
    * 可以在实例配置，也可以单独在接口开启
    */
   cancelPendingTime?: number;
+
   /**
    * 指定当前请求的key，
    * 如果传递该参数，则会覆盖generateRequestKey生成的key
@@ -76,6 +80,7 @@ interface InstanceRequestConfig<D = any, R = any> extends Omit<RequestConfig<D>,
    * 相应拦截及配置：responseInterceptor、responseInterceptorCatch、responseInterceptorOption
    */
   interceptors?: RequestInterceptors<D, R>;
+
   /**
    * 创建请求创建唯一标识，重复请求用此作区分, 默认基于url、method、参数生成
    * 在实例设置时

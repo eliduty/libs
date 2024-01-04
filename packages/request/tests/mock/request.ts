@@ -16,9 +16,12 @@ const request = new Request<IResponse>({
       config.headers['Authorization'] = 'string';
       return config;
     },
-    responseInterceptor({ data, config }) {
-      console.log(data, config);
-      return Promise.resolve(data);
+    responseInterceptor({ data }) {
+      if (data.code === 200) {
+        return Promise.resolve(data.data);
+      } else {
+        return Promise.resolve(data);
+      }
     }
   }
 });

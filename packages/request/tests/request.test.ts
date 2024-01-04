@@ -1,11 +1,25 @@
-import { businessSuccessData } from '@mocks/request/data';
+import { businessErrorMockData, businessSuccessMockData } from '@/mocks/request/data';
 import { describe, expect, test } from 'vitest';
-import { businessSucess } from './mock/api';
+import { businessError, businessSuccess, internalServerError, networkError, unauthorized } from './mock/api';
 
 describe('请求库单元测试', () => {
-  test('ERROR_CODE的值，应该为ERROR_CODE', async () => {
-    expect(businessSucess()).resolves.toEqual(businessSuccessData);
-    // networkError();
-    // expect('__ERROR_CODE__').toBe('__ERROR_CODE__');
+  test('调用businessSuccess，应该返回成功的数据', () => {
+    expect(businessSuccess()).resolves.toEqual(businessSuccessMockData.data);
+  });
+
+  test('调用businessError，应该返回失败的数据', () => {
+    expect(businessError()).resolves.toEqual(businessErrorMockData);
+  });
+
+  test('调用internalServerError，应该返回500 internal server error', () => {
+    expect(internalServerError()).rejects.toThrowErrorMatchingInlineSnapshot(`[AxiosError: Request failed with status code 500]`);
+  });
+
+  test('调用unauthorized，应该返回401 unauthorized', () => {
+    expect(unauthorized()).rejects.toThrowErrorMatchingInlineSnapshot(`[AxiosError: Request failed with status code 401]`);
+  });
+
+  test('调用networkError，应该返回 network error', () => {
+    expect(networkError()).rejects.toThrowErrorMatchingInlineSnapshot(`[AxiosError: Network Error]`);
   });
 });

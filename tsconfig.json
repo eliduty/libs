@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@mocks/*":["./mocks/*"],
+      "@/*":["./*"],
       "@eliduty/request": ["./packages/request/src/index.ts"],
       "@eliduty/storage": ["./packages/storage/src/index.ts"],
       "@eliduty/type": ["./packages/type/src/index.ts"],

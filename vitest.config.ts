@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config';
 const r = (p: string) => resolve(__dirname, p);
 
 const alias = {
-  '@mocks': r('mocks'),
+  '@': r('./'),
   '@eliduty/type': r('packages/type/src'),
   '@eliduty/request': r('packages/request/src')
 };
