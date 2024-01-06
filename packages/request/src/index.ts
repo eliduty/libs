@@ -66,13 +66,13 @@ export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
    * 取消重复请求,默认：true
    * 可以在实例配置，也可以单独在接口开启
    */
-  cancelDuplicateRequest?: boolean;
+  ignoreAbortRequest?: boolean;
 
   /**
    * 设置在请求未响应之前，多长时间内不允许发送相同请求
    * 可以在实例配置，也可以单独在接口开启
    */
-  cancelPendingTime?: number;
+  abortPendingTime?: number;
 
   /**
    * 指定当前请求的key，
@@ -266,16 +266,17 @@ export default class Request<R = any, D = any> {
    * @returns
    */
   request<RES = R, DATA = D>(config: RequestConfig<DATA>) {
-    const conf = Object.assign({ cancelDuplicateRequest: true }, this.config, config);
-    const { cancelDuplicateRequest, cancelPendingTime } = conf;
+    const conf = Object.assign({ ignoreAbortRequest: false }, this.config, config);
+    const { ignoreAbortRequest, abortPendingTime } = conf;
     // 开启了取消重复请求
-    if (cancelDuplicateRequest) {
+    if (!ignoreAbortRequest) {
       const controller = new AbortController();
       conf.signal = controller.signal;
       const hasPendingRequests = this.addPendingRequest(conf, controller);
       // 如果有相同的请求则终止请求
       if (hasPendingRequests) controller.abort('abort request , config:' + config);
-      cancelPendingTime && setTimeout(() => this.removePendingRequest(conf), cancelPendingTime);
+      // 请求未响应之前，多长时间内不允许发送相同请求
+      abortPendingTime && setTimeout(() => this.removePendingRequest(conf), abortPendingTime);
       return this.instance.request<RES, RES extends R ? R : RES, DATA>(conf).finally(() => {
         this.removePendingRequest(conf);
       });

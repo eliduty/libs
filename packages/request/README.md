@@ -52,16 +52,16 @@ const request = new Request({
  */
 export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
   /**
-   * 取消重复请求,默认：true
+   * 忽略终止重复请求,默认：false
    * 可以在实例配置，也可以单独在接口开启
    */
-  cancelDuplicateRequest?: boolean;
+  ignoreAbortRequest?: boolean;
 
   /**
    * 设置在请求未响应之前，多长时间内不允许发送相同请求
    * 可以在实例配置，也可以单独在接口开启
    */
-  cancelPendingTime?: number;
+  abortPendingTime?: number;
 
   /**
    * 指定当前请求的key，
@@ -120,7 +120,7 @@ interface RequestInterceptors<D = any, R = any> {
 
 ## 其它说明
 
-1. 在默认情况下，该库默认开启了请求取消功能，如需自定义控制可通过请求配置参数`cancelDuplicateRequest`进行控制。
+1. 在默认情况下，该库默认开启了请求取消功能，如需自定义控制可通过请求配置参数`ignoreAbortRequest`进行控制。
 
 ## 完整示例
 
@@ -189,5 +189,4 @@ export default request;
 
 ## 迁移指南
 
-1. 取消请求参数由`ignoreCancelToken`变成了`cancelDuplicateRequest`。
-2. 原来的`ignoreCancelToken:true`，现在需要通过`cancelDuplicateRequest:false`来关闭取消重复请求的功能。
+1. 取消请求参数由`ignoreCancelToken`变成了`ignoreAbortRequest`。
