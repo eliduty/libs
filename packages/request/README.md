@@ -1,4 +1,5 @@
 # @eliduty/request
+
 ![npm](https://img.shields.io/npm/dt/@eliduty/request) ![npm](https://img.shields.io/npm/v/@eliduty/request)
 
 基于axios封装的请求库。
@@ -7,7 +8,7 @@
 - 基于Class封装支持多请求实例配置。
 - 更加灵活的请求拦截器和响应拦截器。
 - 支持响应结果转换器。
-- 支持取消请求（默认开启），同时支持单个请求关闭取消请求。
+- 支持实例配置取消重复请求（默认开启），同时支持单个请求关闭。
 
 ## 安装
 
@@ -21,165 +22,172 @@ pnpm install @eliduty/request
 
 ## 基本使用
 
-```javascript
-// 拦截器
-const interceptors={
-    
-};
-// 转换器
-const transforms={
-    
-}
+```typescript
+import Request from '@eliduty/request';
 const request = new Request({
   baseURL:'/api',
   timeout: 10 * 1000,
-  interceptors,
-  transforms,
+  // 拦截器配置
+  interceptors:{
+
+  },
+  // 生成请求KEY方法，可选
+  generateRequestKey(config){
+    return KEY
+  }
 });
 ```
+该工具库也导出了原始axios请求实例和HTTP状态码字典
+
 
 ## 类型说明
 
-#### 请求配置
+### 请求配置
 
 请求配置继承于`AxiosRequestConfig`，除`AxiosRequestConfig`配置选项外，还支持以下配置：
 
 ```typescript
-interface RequestConfig extends AxiosRequestConfig {
-  /**拦截器 */
-  interceptors?: RequestInterceptor;
+/**
+ * 自定义请求参数
+ */
+export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
+  /**
+   * 取消重复请求,默认：true
+   * 可以在实例配置，也可以单独在接口开启
+   */
+  cancelDuplicateRequest?: boolean;
 
-  /**转换器 */
-  transforms?: RequestTransform;
+  /**
+   * 设置在请求未响应之前，多长时间内不允许发送相同请求
+   * 可以在实例配置，也可以单独在接口开启
+   */
+  cancelPendingTime?: number;
 
-  /**忽略请求取消 */
-  ignoreCancelToken?: boolean;
+  /**
+   * 指定当前请求的key，
+   * 如果传递该参数，则会覆盖generateRequestKey生成的key
+   * */
+  requestUniqueKey?: string;
 }
 ```
 
-#### 响应结果
+### 拦截器类型说明
 
 ```typescript
-type RequestResponse<T = unknown> = AxiosResponse<T>;
-```
+/**
+ * 拦截器配置
+ */
+interface RequestInterceptors<D = any, R = any> {
+  /**
+   * 请求成功拦截器
+   * @param config
+   * @returns
+   */
+  requestInterceptor?: (config: InternalAxiosRequestConfig<D>) => InternalAxiosRequestConfig<D> | Promise<InternalAxiosRequestConfig<D>>;
 
-#### 拦截器类型说明
+  /**
+   * 请求失败拦截器
+   * @param err
+   * @returns
+   */
+  requestInterceptorCatch?: (err: any) => any;
 
-```typescript
-interface RequestInterceptor {
-  /**请求拦截器 */
-  requestInterceptor?: (config: RequestConfig) => RequestConfig;
+  /**
+   * 请求拦截器配置
+   */
+  requestInterceptorOption?: AxiosInterceptorOptions;
 
-  /**请求错误拦截器 */
-  requestInterceptorCatch?: (error: AxiosError) => Promise<any>;
+  /**
+   * 响应拦截器配置
+   * @param response
+   * @returns
+   */
+  responseInterceptor?: <T extends R = R>(response: AxiosResponse<T, R>) => any;
 
-  /**响应拦截器 */
-  responseInterceptor?: (response: AxiosResponse) => AxiosResponse;
+  /**
+   * 响应失败拦截器配置
+   * @param err
+   * @returns
+   */
+  responseInterceptorCatch?: (err: AxiosError<R>) => any;
 
-  /**响应错误拦截器 */
-  responseInterceptorCatch?: (error: AxiosError) => Promise<any>;
-}
-```
-
-#### 转换器类型说明
-
-```typescript
-interface RequestTransform {
-  /**请求配置转换 */
-  requestTransform?: (config: RequestConfig) => RequestConfig;
-
-  /**响应结果转换 */
-  responseTransform?: (response: AxiosResponse, config: RequestConfig) => any;
-
-  /**响应错误转换 */
-  responseTransformCatch?: <T = unknown>(error: AxiosError, config: RequestConfig) => Promise<T>;
+  /**
+   * 响应拦截器
+   */
+  responseInterceptorOption?: AxiosInterceptorOptions;
 }
 ```
 
 ## 其它说明
 
-1. 在某些情况下业务失败，但请求返回的对应状态码为200，如若想在请求成功，但业务失败的情况下，通过Promise的catch来接受错误，可以在转换器`responseTransform`中`return`常量标识符`ERROR_CODE`来将结果传递出去,在catch中可以获得完整的请求响应结果。
-
-   ```javascript
-   import { ERROR_CODE } from '@eliduty/request';
-   const transform={
-     responseTransform({ data }, config) {
-       const { result, error } = data;
-       if (!error) {
-         return result;
-       } else {
-         return ERROR_CODE; 
-       }
-     },
-   }
-   ```
-
-2. 在默认情况下，该库默认开启了请求取消功能，如需自定义控制可通过请求配置参数`ignoreCancelToken`进行控制。
+1. 在默认情况下，该库默认开启了请求取消功能，如需自定义控制可通过请求配置参数`cancelDuplicateRequest`进行控制。
 
 ## 完整示例
 
 ```typescript
-import Request, { ERROR_CODE } from '@eliduty/request';
-import type { RequestInterceptor, RequestTransform, RequestResponse } from '@eliduty/request';
+import Request from '@eliduty/request';
 
-const interceptors: RequestInterceptor = {
-  requestInterceptor: config => {
-    //请求拦截器 
-    config.headers = {
-      ...config.headers,
-      'Some-Header1': 'header info2',
-    };
-    return config;
-  },
-  responseInterceptorCatch: error => {
-    const { response } = error;
-    if (response) {
-      // 非成功状态码
-      return Promise.reject(response);
-    } else {
-      // 未联网
-      // alert('网络异常，请检查网络连接');
-      return Promise.reject(new Error('网络异常，请检查网络连接'));
-    }
-  },
-};
-
-const transform: RequestTransform = {
-  requestTransform(config) {
-    config.headers = {
-      ...config.headers,
-      'Some-Header2': 'header info2',
-    };
-    return config;
-  },
-  responseTransform({ data }: RequestResponse<Result>, config) {
-    const { result, error } = data;
-    if (!error) {
-      return result;
-    } else {
-      return ERROR_CODE; 
-    }
-  },
-   responseTransformCatch(err) {
-     // 全局错误处理
-     return Promise.reject(err);
-   }
-};
-
-export interface Result<T = any> {
-  error: number;
-  message: string;
-  result: T;
+interface ResponseType {
+  code: number;
+  message: number;
+  data: any;
 }
 
-const request = new Request({
-  baseURL:'/api',
-  timeout: 10 * 1000,
-  transforms,
-  interceptors,
+const request = new Request<ResponseType>({
+  timeout: 30000,
+  baseURL: '',
+  interceptors: {
+    requestInterceptor(config) {
+      config.headers['App-Version'] = 'v0.1.0';
+      config.headers['Authorization'] = 'string';
+      config.headers['Some-Header-Key'] = 'Some-Header-Value';
+      return config;
+    },
+    requestInterceptorCatch(err) {
+      console.log('requestInterceptorCatch', err);
+      return err;
+    },
+    responseInterceptor({ data }) {
+      if (data.code === 200) {
+        return Promise.resolve(data.data);
+      } else {
+        return Promise.resolve(data);
+      }
+    },
+
+    responseInterceptorCatch(error) {
+      const { response, code } = error;
+      if (code === 'ERR_CANCELED') return Promise.reject(new Error('请求取消'));
+
+      if (!response) return Promise.reject(new Error('网络异常，请检查网络连接'));
+
+      if (response.status === 401) {
+        // console.log('请求配置', config);
+        return Promise.reject(new Error('未授权'));
+      }
+
+      if (response.status === 500) {
+        return Promise.reject(new Error('服务器异常'));
+      }
+
+      // 其它情况处理
+
+      return Promise.reject(response);
+    }
+  }
 });
+
+export const get = request.get.bind(request);
+export const post = request.post.bind(request);
+export const put = request.put.bind(request);
+export const patch = request.patch.bind(request);
+export const del = request.delete.bind(request);
 
 export default request;
 
 ```
 
+## 迁移指南
+
+1. 取消请求参数由`ignoreCancelToken`变成了`cancelDuplicateRequest`。
+2. 原来的`ignoreCancelToken:true`，现在需要通过`cancelDuplicateRequest:false`来关闭取消重复请求的功能。

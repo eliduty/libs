@@ -3,11 +3,17 @@
 import rawRequest from 'axios';
 
 import type { AxiosError, AxiosInstance, AxiosInterceptorOptions, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import status from './status';
 
 /**
  * 原始axios请求
  */
 export const axios = rawRequest;
+
+/**
+ * HTTP CODE
+ */
+export const HTTP_STAUTS = status;
 
 /**
  * 拦截器配置
@@ -19,12 +25,14 @@ interface RequestInterceptors<D = any, R = any> {
    * @returns
    */
   requestInterceptor?: (config: InternalAxiosRequestConfig<D>) => InternalAxiosRequestConfig<D> | Promise<InternalAxiosRequestConfig<D>>;
+
   /**
    * 请求失败拦截器
    * @param err
    * @returns
    */
   requestInterceptorCatch?: (err: any) => any;
+
   /**
    * 请求拦截器配置
    */
@@ -55,13 +63,13 @@ interface RequestInterceptors<D = any, R = any> {
  */
 export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
   /**
-   * 忽略重复请求功能：
+   * 取消重复请求,默认：true
    * 可以在实例配置，也可以单独在接口开启
    */
-  ignoreDuplicateRequest?: boolean;
+  cancelDuplicateRequest?: boolean;
 
   /**
-   * 设置在多长时间内不允许发送重复请求
+   * 设置在请求未响应之前，多长时间内不允许发送相同请求
    * 可以在实例配置，也可以单独在接口开启
    */
   cancelPendingTime?: number;
@@ -77,7 +85,7 @@ interface InstanceRequestConfig<D = any, R = any> extends Omit<RequestConfig<D>,
   /**
    * 拦截器配置：
    * 请求拦截及配置：requestInterceptor、requestInterceptorCatch、requestInterceptorOption
-   * 相应拦截及配置：responseInterceptor、responseInterceptorCatch、responseInterceptorOption
+   * 响应拦截及配置：responseInterceptor、responseInterceptorCatch、responseInterceptorOption
    */
   interceptors?: RequestInterceptors<D, R>;
 
@@ -214,10 +222,15 @@ export default class Request<R = any, D = any> {
    * 添加请求到列表
    * @param config
    * @param controller
+   * @returns 是否有相同的请求在请求中
    */
   private addPendingRequest(config: RequestConfig, controller: AbortController) {
     const key = this.generUniqueRequestKey(config);
-    this.pendingRequests.has(key) ? controller.abort('请求被取消,config:' + config) : this.pendingRequests.set(key, controller);
+    const hasPendingRequests = this.pendingRequests.has(key);
+    if (!hasPendingRequests) {
+      this.pendingRequests.set(key, controller);
+    }
+    return hasPendingRequests;
   }
 
   /**
@@ -253,18 +266,21 @@ export default class Request<R = any, D = any> {
    * @returns
    */
   request<RES = R, DATA = D>(config: RequestConfig<DATA>) {
-    // 如果开启了取消重复请求
-    if (this.config.ignoreDuplicateRequest || config.ignoreDuplicateRequest) {
+    const conf = Object.assign({ cancelDuplicateRequest: true }, this.config, config);
+    const { cancelDuplicateRequest, cancelPendingTime } = conf;
+    // 开启了取消重复请求
+    if (cancelDuplicateRequest) {
       const controller = new AbortController();
-      config.signal = controller.signal;
-      this.addPendingRequest(config, controller);
-      const cancelPendingTime = this.config.cancelPendingTime || config.cancelPendingTime;
-      cancelPendingTime && setTimeout(() => this.removePendingRequest(config), cancelPendingTime);
-      return this.instance.request<RES, RES extends R ? R : RES, DATA>(config).finally(() => {
-        this.removePendingRequest(config);
+      conf.signal = controller.signal;
+      const hasPendingRequests = this.addPendingRequest(conf, controller);
+      // 如果有相同的请求则终止请求
+      if (hasPendingRequests) controller.abort('abort request , config:' + config);
+      cancelPendingTime && setTimeout(() => this.removePendingRequest(conf), cancelPendingTime);
+      return this.instance.request<RES, RES extends R ? R : RES, DATA>(conf).finally(() => {
+        this.removePendingRequest(conf);
       });
     }
-    return this.instance.request<RES, RES extends R ? R : RES, DATA>(config);
+    return this.instance.request<RES, RES extends R ? R : RES, DATA>(conf);
   }
 
   /**
