@@ -49,9 +49,6 @@
     }
   ],
   "homepage": "https://github.com/eliduty/libs/tree/main/packages/request#readme",
-  "dependencies": {
-    "@eliduty/type": "workspace:*"
-  },
   "peerDependencies": {
     "axios": "^1.6.2"
   },
