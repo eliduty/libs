@@ -1,4 +1,6 @@
-export default {
+import type { HttpStatusCode } from 'axios';
+
+const status: Partial<Record<HttpStatusCode, string>> = {
   400: '请求参数错误',
   401: '未授权, 请重新登录',
   403: '服务器拒绝本次访问',
@@ -18,3 +20,5 @@ export default {
   504: '网关超时',
   505: 'HTTP版本不受支持'
 };
+
+export default status;
