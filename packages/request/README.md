@@ -41,7 +41,7 @@ const request = new Request({
 该工具库也导出了原始axios请求实例和HTTP状态码字典，使用方式如下：
 
 ```typescript
-import {axios,HTTP_STATUS} from '@eliduty/request';
+import { axios , HTTP_STATUS } from '@eliduty/request';
 ```
 
 `HTTP_STATUS` 字典如下：

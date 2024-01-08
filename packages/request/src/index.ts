@@ -13,7 +13,7 @@ export const axios = rawRequest;
 /**
  * HTTP CODE
  */
-export const HTTP_STAUTS = status;
+export const HTTP_STATUS = status;
 
 /**
  * 拦截器配置
