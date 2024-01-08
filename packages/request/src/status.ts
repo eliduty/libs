@@ -1,6 +1,8 @@
-import type { HttpStatusCode } from 'axios';
+import type { AxiosResponse, HttpStatusCode } from 'axios';
 
-const status: Partial<Record<HttpStatusCode, string>> = {
+export type RequestHttpStatusType = Partial<Record<HttpStatusCode, string>> & Record<AxiosResponse['status'], string>;
+
+const status: RequestHttpStatusType = {
   400: '请求参数错误',
   401: '未授权, 请重新登录',
   403: '服务器拒绝本次访问',

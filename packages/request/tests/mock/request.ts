@@ -1,4 +1,4 @@
-import Request from '@eliduty/request';
+import Request, { HTTP_STATUS } from '@eliduty/request';
 
 interface ResponseType {
   code: number;
@@ -34,6 +34,7 @@ const request = new Request<ResponseType>({
 
       if (!response) return Promise.reject(new Error('网络异常，请检查网络连接'));
 
+      console.log(HTTP_STATUS[response.status]);
       if (response.status === 401) {
         // console.log('请求配置', config);
         return Promise.reject(new Error('未授权'));

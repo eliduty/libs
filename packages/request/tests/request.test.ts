@@ -1,5 +1,5 @@
 import { businessErrorMockData, businessSuccessMockData } from '@/mocks/request/data';
-import { HTTP_STAUTS } from '@eliduty/request';
+import { HTTP_STATUS } from '@eliduty/request';
 import { describe, expect, test } from 'vitest';
 import { businessError, businessSuccess, internalServerError, networkError, unauthorized } from './mock/api';
 
@@ -29,7 +29,7 @@ describe('请求库单元测试', () => {
   });
 
   test('调用HTTP_STAUTS，应该返回所有的错误信息', () => {
-    expect(HTTP_STAUTS).toMatchInlineSnapshot(`
+    expect(HTTP_STATUS).toMatchInlineSnapshot(`
       {
         "400": "请求参数错误",
         "401": "未授权, 请重新登录",
