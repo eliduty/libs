@@ -180,7 +180,7 @@ const request = new Request<ResponseType>({
       if (data.code === 200) {
         return Promise.resolve(data.data);
       } else {
-        return Promise.resolve(data);
+        return Promise.reject(data);
       }
     },
 
