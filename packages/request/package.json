@@ -1,6 +1,6 @@
 {
   "name": "@eliduty/request",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "eliduty<eliduty@qq.com>",
   "description": "基于axios封装的请求库",
   "license": "MIT",
