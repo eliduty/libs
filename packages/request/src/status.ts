@@ -4,7 +4,7 @@ export type RequestHttpStatusType = Partial<Record<HttpStatusCode, string>> & Re
 
 const status: RequestHttpStatusType = {
   400: '请求参数错误',
-  401: '未授权, 请重新登录',
+  401: '未授权',
   403: '服务器拒绝本次访问',
   404: '请求错误,未找到该资源',
   405: '请求方法未允许',
