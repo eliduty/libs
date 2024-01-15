@@ -53,6 +53,6 @@
     "axios": "^1.6.2"
   },
   "devDependencies": {
-    "axios": "^1.6.2"
+    "axios": "^1.6.5"
   }
 }
