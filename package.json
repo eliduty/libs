@@ -40,26 +40,26 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@eliduty/eslint-config": "^1.0.35",
-    "@eliduty/prettier-config": "^1.0.20",
+    "@eliduty/eslint-config": "^1.1.2",
+    "@eliduty/prettier-config": "^1.0.23",
     "@eliduty/request": "workspace:^",
-    "@eliduty/tsconfig": "^1.0.22",
+    "@eliduty/tsconfig": "^1.1.3",
     "@release-it/conventional-changelog": "^8.0.1",
     "chalk": "^5.3.0",
-    "eslint": "^8.56.0",
-    "jsdom": "^23.2.0",
-    "msw": "^2.0.14",
+    "eslint": "^8.57.0",
+    "jsdom": "^24.0.0",
+    "msw": "^2.2.11",
     "nano-staged": "^0.8.0",
     "npm-run-all": "^4.1.5",
-    "pnpm": "^8.14.1",
-    "prettier": "^3.2.2",
-    "release-it": "^17.0.1",
-    "simple-git-hooks": "^2.9.0",
-    "taze": "^0.13.1",
-    "tsx": "^4.7.0",
-    "typescript": "^5.3.3",
+    "pnpm": "^8.15.5",
+    "prettier": "^3.2.5",
+    "release-it": "^17.1.1",
+    "simple-git-hooks": "^2.11.1",
+    "taze": "^0.13.3",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3",
     "unbuild": "^2.0.0",
-    "vitest": "^1.2.0"
+    "vitest": "^1.4.0"
   },
-  "packageManager": "pnpm@8.14.1"
+  "packageManager": "pnpm@8.15.5"
 }
