@@ -4,10 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*":["./*"],
-      "@eliduty/request": ["./packages/request/src/index.ts"],
-      "@eliduty/storage": ["./packages/storage/src/index.ts"],
-      "@eliduty/type": ["./packages/type/src/index.ts"],
-      "@eliduty/validator": ["./packages/validator/src/index.ts"]
+      "@eliduty/*": ["./packages/*/src/index.ts"],
     }
   },
   "exclude": ["**/dist/**", "**/node_modules/**"],
