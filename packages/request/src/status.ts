@@ -1,6 +1,7 @@
 import type { AxiosResponse, HttpStatusCode } from 'axios';
 
-export type RequestHttpStatusType = Partial<Record<HttpStatusCode, string>> & Record<AxiosResponse['status'], string>;
+export type RequestHttpStatusType = Partial<Record<HttpStatusCode, string>> &
+  Record<AxiosResponse['status'], string>;
 
 const status: RequestHttpStatusType = {
   400: '请求参数错误',

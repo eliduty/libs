@@ -1,55 +1,55 @@
 {
-	"name": "@eliduty/storage",
-	"version": "1.0.2",
-	"author": "eliduty<eliduty@qq.com>",
-	"description": "该工具库是在本地存储的基础上进行的封装，优化使用体验，支持自定义localStorage和sessionStorage存储驱动。",
-	"license": "MIT",
-	"keywords": [
-		"tool",
-		"util",
-		"lib",
-		"storage",
-		"localStorage",
-		"sessionStorage",
-		"expire",
-		"UMD",
-		"ESM"
-	],
-	"type": "module",
-	"main": "dist/index.cjs",
-	"types": "dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
-		},
-		"./*": "./*"
-	},
-	"scripts": {
-		"build": "unbuild",
-		"release": "release-it"
-	},
-	"files": [
-		"dist/*"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/eliduty/libs.git",
-		"directory": "packages/storage"
-	},
-	"bugs": {
-		"url": "https://github.com/eliduty/libs/issues"
-	},
-	"contributors": [
-		{
-			"name": "eliduty",
-			"email": "eliduty@qq.com",
-			"url": "https://github.com/eliduty"
-		}
-	],
-	"homepage": "https://github.com/eliduty/libs/tree/main/packages/storage#readme"
+  "name": "@eliduty/storage",
+  "version": "1.0.2",
+  "description": "该工具库是在本地存储的基础上进行的封装，优化使用体验，支持自定义localStorage和sessionStorage存储驱动。",
+  "type": "module",
+  "keywords": [
+    "tool",
+    "util",
+    "lib",
+    "storage",
+    "localStorage",
+    "sessionStorage",
+    "expire",
+    "UMD",
+    "ESM"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/eliduty/libs/tree/main/packages/storage#readme",
+  "bugs": {
+    "url": "https://github.com/eliduty/libs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliduty/libs.git",
+    "directory": "packages/storage"
+  },
+  "author": "eliduty<eliduty@qq.com>",
+  "contributors": [
+    {
+      "name": "eliduty",
+      "email": "eliduty@qq.com",
+      "url": "https://github.com/eliduty"
+    }
+  ],
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "release": "release-it"
+  }
 }

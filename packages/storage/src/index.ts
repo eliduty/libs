@@ -3,7 +3,7 @@
  * @Github: https://github.com/eliduty
  * @Date: 2022-01-25 08:47:36
  * @LastEditors: eliduty
- * @LastEditTime: 2022-03-22 20:06:09
+ * @LastEditTime: 2024-07-08 15:27:37
  * @Description:
  */
 
@@ -34,9 +34,9 @@ export default class Estorage {
   }
   get<T = unknown>(key: string) {
     key = this.getKey(key);
-    let value = this.driver.getItem(key) || '';
+    const value = this.driver.getItem(key) || '';
     if (value) {
-      let storageData = JSON.parse(value) as EstorageData<T>;
+      const storageData = JSON.parse(value) as EstorageData<T>;
       const time = new Date().getTime();
       if (storageData.expire && time > storageData.expire) {
         this.remove(key);
@@ -50,7 +50,10 @@ export default class Estorage {
   set(key: string, data: unknown, config: EstorageConfig = {}) {
     key = this.getKey(key);
     const time = new Date().getTime();
-    const value = { expire: config.expire ? time + config.expire * 1000 : undefined, data } as EstorageData;
+    const value: EstorageData = {
+      expire: config.expire ? time + config.expire * 1000 : undefined,
+      data
+    };
     this.driver.setItem(key, JSON.stringify(value));
   }
   remove(...keys: string[]) {

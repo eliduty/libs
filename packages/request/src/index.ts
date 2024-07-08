@@ -1,8 +1,12 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import rawRequest from 'axios';
-
-import type { AxiosError, AxiosInstance, AxiosInterceptorOptions, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import rawRequest, {
+  type AxiosError,
+  type AxiosInstance,
+  type AxiosInterceptorOptions,
+  type AxiosRequestConfig,
+  type AxiosRequestHeaders,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig
+} from 'axios';
 import status from './status';
 
 /**
@@ -24,7 +28,9 @@ interface RequestInterceptors<D = any, R = any> {
    * @param config
    * @returns
    */
-  requestInterceptor?: (config: InternalAxiosRequestConfig<D>) => InternalAxiosRequestConfig<D> | Promise<InternalAxiosRequestConfig<D>>;
+  requestInterceptor?: (
+    config: InternalAxiosRequestConfig<D>
+  ) => InternalAxiosRequestConfig<D> | Promise<InternalAxiosRequestConfig<D>>;
 
   /**
    * 请求失败拦截器
@@ -81,7 +87,8 @@ export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
   requestUniqueKey?: string;
 }
 
-interface InstanceRequestConfig<D = any, R = any> extends Omit<RequestConfig<D>, 'requestUniqueKey'> {
+interface InstanceRequestConfig<D = any, R = any>
+  extends Omit<RequestConfig<D>, 'requestUniqueKey'> {
   /**
    * 拦截器配置：
    * 请求拦截及配置：requestInterceptor、requestInterceptorCatch、requestInterceptorOption
@@ -140,13 +147,29 @@ export default class Request<R = any, D = any> {
     const classInterceptors = Request.interceptors;
     const instanceInterceptors = this.config.interceptors;
     // 全局前置拦截器
-    this.instance.interceptors.request.use(classInterceptors?.requestInterceptor, classInterceptors?.requestInterceptorCatch, instanceInterceptors?.requestInterceptorOption);
+    this.instance.interceptors.request.use(
+      classInterceptors?.requestInterceptor,
+      classInterceptors?.requestInterceptorCatch,
+      instanceInterceptors?.requestInterceptorOption
+    );
     // 实例前置拦截器
-    this.instance.interceptors.request.use(instanceInterceptors?.requestInterceptor, instanceInterceptors?.requestInterceptorCatch, instanceInterceptors?.requestInterceptorOption);
+    this.instance.interceptors.request.use(
+      instanceInterceptors?.requestInterceptor,
+      instanceInterceptors?.requestInterceptorCatch,
+      instanceInterceptors?.requestInterceptorOption
+    );
     // 全局后置拦截器
-    this.instance.interceptors.response.use(classInterceptors?.responseInterceptor, classInterceptors?.responseInterceptorCatch, classInterceptors?.responseInterceptorOption);
+    this.instance.interceptors.response.use(
+      classInterceptors?.responseInterceptor,
+      classInterceptors?.responseInterceptorCatch,
+      classInterceptors?.responseInterceptorOption
+    );
     // 实例后置拦截器
-    this.instance.interceptors.response.use(instanceInterceptors?.responseInterceptor, instanceInterceptors?.responseInterceptorCatch, instanceInterceptors?.responseInterceptorOption);
+    this.instance.interceptors.response.use(
+      instanceInterceptors?.responseInterceptor,
+      instanceInterceptors?.responseInterceptorCatch,
+      instanceInterceptors?.responseInterceptorOption
+    );
   }
 
   /**
@@ -274,7 +297,7 @@ export default class Request<R = any, D = any> {
       conf.signal = controller.signal;
       const hasPendingRequests = this.addPendingRequest(conf, controller);
       // 如果有相同的请求则终止请求
-      if (hasPendingRequests) controller.abort('abort request , config:' + config);
+      if (hasPendingRequests) controller.abort(`abort request , config:${config}`);
       // 请求未响应之前，多长时间内不允许发送相同请求
       abortPendingTime && setTimeout(() => this.removePendingRequest(conf), abortPendingTime);
       return this.instance.request<RES, RES extends R ? R : RES, DATA>(conf).finally(() => {

@@ -1,7 +1,13 @@
 import { businessErrorMockData, businessSuccessMockData } from '@/mocks/request/data';
 import { HTTP_STATUS } from '@eliduty/request';
 import { describe, expect, test } from 'vitest';
-import { businessError, businessSuccess, internalServerError, networkError, unauthorized } from './mock/api';
+import {
+  businessError,
+  businessSuccess,
+  internalServerError,
+  networkError,
+  unauthorized
+} from './mock/api';
 
 describe('请求库单元测试', () => {
   test('调用businessSuccess，应该返回成功的数据', () => {

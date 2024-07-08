@@ -12,7 +12,7 @@ const request = new Request<ResponseType>({
   interceptors: {
     requestInterceptor(config) {
       config.headers['App-Version'] = 'v0.1.0';
-      config.headers['Authorization'] = 'string';
+      config.headers.Authorization = 'string';
       config.headers['Some-Header-Key'] = 'Some-Header-Value';
       return config;
     },
