@@ -10,6 +10,6 @@
       "@eliduty/validator": ["./packages/validator/src/index.ts"]
     }
   },
-  "exclude": ["**/dist/**", "**/node_modules/**"],
   "include": ["**/src/**/*.ts", "**/src/**/*.d.ts", "**/src/**/*.tsx", "**/src/**/*.vue","types/*.d.ts","mocks/**/*.ts","**/tests/**/*.ts"],
+  "exclude": ["**/dist/**", "**/node_modules/**"],
 }
